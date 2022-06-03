@@ -1,24 +1,33 @@
-# README
+# Makers Square
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
 
-Things you may want to cover:
+### サイトテーマ
 
-* Ruby version
+自分の作ったハンドメイド作品を発表し、他の人が作った作品を楽しんだり、参考にしたりするハンドメイド作品の写真投稿サイト
 
-* System dependencies
+### テーマを選んだ理由
 
-* Configuration
+趣味でハンドメイド作品を作っており、SNS に作品の写真を投稿しています。SNS には様々な写真が投稿されているので、ハンドメイド作品に特化したサイトがあれば、他の人の作品を見つけやすくなります。また、ハンドメイド作品の販売サイト・サービスはありますが、それらのサイトでは販売を目的としていない作品を発表しづらいので、気軽に作品を見てもらえる環境を作りたいと考え、このテーマにしました。
 
-* Database creation
+### ターゲットユーザ
 
-* Database initialization
+ハンドメイド作品を作っている人。ハンドメイド作品を見るのが好きな人。
 
-* How to run the test suite
+### 主な利用シーン
 
-* Services (job queues, cache servers, search engines, etc.)
+作った作品の写真を投稿、発表する。
+他の人が投稿した作品の写真見て、自分の製作に参考になるものを探す。
+作品に使用した材料などの情報の共有。
 
-* Deployment instructions
+## 設計書
 
-* ...
+## 開発環境
+
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JS ライブラリ：jQuery
+- IDE：Cloud9
+
+## 使用素材
