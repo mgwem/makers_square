@@ -9,5 +9,27 @@ Rails.application.routes.draw do
     registrations: "public/registrations",
     sessions: "public/sessions"
   }
+
+  # 管理者側
+  namespace :admin do
+    root :to => "homes#top"
+    get 'posts/member_posts' => "posts#member_posts"
+    resources :members, only:[:show, :edit, :update, :destroy]
+    resources :posts, only:[:index, :show, :update, :edit, :destroy]
+    resources :genres, only:[:index, :create, :edit, :update, :destroy]
+  end
+
+  # 会員側
+  scope module: :public do
+    root :to => "homes#top"
+    get "about" => "homes#about"
+    get 'members/my_page' => "members#my_page"
+    get 'members/unsubscribe' => "members#unsubscribe"
+    get 'posts/post_management' => "posts#post_management"
+    get 'posts/member_posts' => "posts#member_posts"
+    resources :members, only:[:edit, :upadate, :destroy, :show]
+    resources :post
+  end
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
