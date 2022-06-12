@@ -25,9 +25,10 @@ Rails.application.routes.draw do
     get "about" => "homes#about"
     get 'members/my_page' => "members#my_page"
     get 'members/unsubscribe' => "members#unsubscribe"
+    patch 'members/withdraw' => "members#withdraw"
     get 'posts/post_management' => "posts#post_management"
     get 'posts/member_posts' => "posts#member_posts"
-    resources :members, only:[:edit, :upadate, :destroy, :show]
+    resources :members, only:[:edit, :update, :show]
     resources :posts
   end
 
