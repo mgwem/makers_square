@@ -28,7 +28,7 @@ Rails.application.routes.draw do
     get 'posts/post_management' => "posts#post_management"
     get 'posts/member_posts' => "posts#member_posts"
     resources :members, only:[:edit, :upadate, :destroy, :show]
-    resources :post
+    resources :posts
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

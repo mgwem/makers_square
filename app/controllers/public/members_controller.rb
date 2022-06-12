@@ -1,5 +1,6 @@
 class Public::MembersController < ApplicationController
   def my_page
+    @member = current_member
   end
 
   def edit
