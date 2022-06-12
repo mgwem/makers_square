@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   namespace :admin do
     root :to => "homes#top"
     get 'posts/member_posts' => "posts#member_posts"
-    resources :members, only:[:show, :edit, :update, :destroy]
+    resources :members, only:[:show, :edit, :update]
     resources :posts, only:[:index, :show, :update, :edit, :destroy]
     resources :genres, only:[:index, :create, :edit, :update, :destroy]
   end

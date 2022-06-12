@@ -1,2 +1,32 @@
-<h1>Admin::Members#show</h1>
-<p>Find me in app/views/admin/members/show.html.erb</p>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-9 mx-auto">
+      <h2>
+        <%= image_tag @member.get_profile_image(50, 50) %>
+        <span class="ml-2"><%= @member.name %>さんの詳細</span>
+        <%= link_to "編集", edit_admin_member_path(@member), class: "btn btn-warning text-light ml-5" %>
+      </h2>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-8 mt-4 mx-auto">
+      <table class="table">
+        <%= render 'public/members/info', member: @member %>
+        <tr>
+          <th>ユーザステータス</th>
+          <td>
+            <% if @member.is_void == true %>
+                <span class="text-danger">無効</span>
+              <% elsif @member.is_void == false %>
+                <span class="text-success">有効</span>
+              <% end %>
+          </td>
+        </tr>
+      </table>
+      <!-- リンク先仮 -->
+      <%= link_to "作品一覧", admin_root_path, class: "btn btn-success mt-5 px-5" %>
+    </div>
+
+  </div>
+</div>
