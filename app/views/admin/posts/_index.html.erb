@@ -9,14 +9,12 @@
         <% posts.each do |post| %>
         <tr>
           <td>
-            <!-- リンク先仮 -->
-            <%= link_to admin_posts_path do %>
+            <%= link_to admin_post_path(post) do %>
               <%= image_tag post.get_post_image(50, 50) %>
             <% end %>
           </td>
           <td>
-            <!-- リンク先仮 -->
-            <%= link_to admin_posts_path do %>
+            <%= link_to admin_post_path(post) do %>
               <%= post.title %>
             <% end %>
           </td>
@@ -25,9 +23,9 @@
           </td>
           <td>
             <% if post.is_published == true %>
-              <span class="text-danger">公開</span>
+              <span class="text-success">公開</span>
             <% elsif post.is_published  == false %>
-              <span class="text-success">非公開</span>
+              <span class="text-danger">非公開</span>
             <% end %>
           </td>
           <td>

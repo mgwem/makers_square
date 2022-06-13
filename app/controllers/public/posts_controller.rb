@@ -19,7 +19,7 @@ class Public::PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @member = Member.find(params[:member_id])
-    @member_posts = @member.posts.limit(6).order(id: :DESC)
+    @posts = @member.posts.limit(6).order(id: :DESC)
   end
 
   def edit
