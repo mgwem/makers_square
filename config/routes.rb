@@ -26,8 +26,8 @@ Rails.application.routes.draw do
     get 'members/my_page' => "members#my_page"
     get 'members/unsubscribe' => "members#unsubscribe"
     patch 'members/withdraw' => "members#withdraw"
+    get 'members/:id/posts' => "members#posts", as: :members_posts
     get 'posts/post_management' => "posts#post_management"
-    get 'posts/member_posts' => "posts#member_posts"
     resources :members, only:[:edit, :update, :show] do
       resources :posts, only:[:show]
     end

@@ -58,9 +58,6 @@ class Public::PostsController < ApplicationController
     @posts = @member.posts.order(id: :DESC)
   end
 
-  def member_posts
-  end
-
   private
 
   def post_params

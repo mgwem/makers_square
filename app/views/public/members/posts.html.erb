@@ -1,0 +1,16 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-6 mx-auto">
+      <h2><%= @member.name %>さんの作品一覧</h2>
+      <% @posts.each do |post| %>
+        <div class="mt-3">
+          <%= link_to member_post_path(post.member , post) do %>
+            <%= image_tag post.get_post_image(100, 100) %></br>
+            <%= post.title %></br>
+          <% end %>
+        </div>
+      <% end %>
+      <%= paginate @posts %>
+    </div>
+  </div>
+</div>
