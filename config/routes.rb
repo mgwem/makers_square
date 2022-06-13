@@ -28,8 +28,10 @@ Rails.application.routes.draw do
     patch 'members/withdraw' => "members#withdraw"
     get 'posts/post_management' => "posts#post_management"
     get 'posts/member_posts' => "posts#member_posts"
-    resources :members, only:[:edit, :update, :show]
-    resources :posts
+    resources :members, only:[:edit, :update, :show] do
+      resources :posts, only:[:show]
+    end
+    resources :posts, only:[:new, :create, :edit, :upadate, :index, :destroy]
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

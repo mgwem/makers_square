@@ -1,2 +1,35 @@
-<h1>Public::Posts#show</h1>
-<p>Find me in app/views/public/posts/show.html.erb</p>
+<div class="container mt-5">
+  <div class="row">
+    <!-- 作品詳細 -->
+    <div class="col-md-7">
+      <p>
+        <span class="btn btn-success mr-3"><%= @post.genre.name %></span>
+        <span class="h3"><%= @post.title %></span>
+      </p>
+      <%= image_tag @post.get_post_image(500, 500), class: "w-100" %>
+      <%= link_to member_path(@member) do %>
+        <p>by <%= @member.name %></p>
+      <% end %>
+      <p><%= @post.created_at.strftime('%Y/%m/%d') %></p>
+      <p><%= @post.explanation %></p>
+      <% if @member.id == current_member.id %>
+        <%= link_to "編集する", edit_post_path(@post), class: "btn btn-warning text-white" %>
+      <% end %>
+    </div>
+
+    <!-- 作者プロフィール -->
+    <div class="col-md-4 offset-md-1 border border-secondary p-4 h-100 rounded">
+      <p>
+        <%= image_tag @member.get_profile_image(50, 50), class: "rounded-circle" %>
+        <%= link_to member_path(@member) do %>
+        <span class="h6"><%= @member.name %></span>
+        <% end %>
+      </p>
+      <p><%= @post.member.introduction %></p>
+      <% @member_posts.each do |member_post| %>
+        <%= image_tag member_post.get_post_image(100, 100) %>
+      <% end %>
+    </div>
+
+  </div>
+</div>
