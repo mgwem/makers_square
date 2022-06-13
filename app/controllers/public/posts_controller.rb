@@ -23,12 +23,30 @@ class Public::PostsController < ApplicationController
   end
 
   def edit
+    @post = Post.find(params[:id])
+    @genres = Genre.all
   end
 
-  def upadate
+  def update
+    @post = Post.find(params[:id])
+    if @post.update(post_params)
+      flash[:notice] = "作品を更新しました"
+      redirect_to member_post_path(@post.member, @post)
+    else
+      @genres = Genre.all
+      render :edit
+    end
   end
 
   def destroy
+    @post = Post.find(params[:id])
+    if @post.destroy
+      flash[:notice] = "作品を削除しました"
+      redirect_to member_path(@post.member)
+    else
+      @genres = Genre.all
+      render :edit
+    end
   end
 
   def index
@@ -36,6 +54,8 @@ class Public::PostsController < ApplicationController
   end
 
   def post_management
+    @member = current_member
+    @posts = @member.posts.order(id: :DESC)
   end
 
   def member_posts

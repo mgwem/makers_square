@@ -31,7 +31,7 @@ Rails.application.routes.draw do
     resources :members, only:[:edit, :update, :show] do
       resources :posts, only:[:show]
     end
-    resources :posts, only:[:new, :create, :edit, :upadate, :index, :destroy]
+    resources :posts, only:[:new, :create, :edit, :update, :index, :destroy]
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
