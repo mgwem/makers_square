@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   # 管理者側
   namespace :admin do
     root :to => "homes#top"
-    get 'posts/member_posts' => "posts#member_posts"
+    get 'members/:id/posts' => "members#posts"
     resources :members, only:[:show, :edit, :update]
     resources :posts, only:[:index, :show, :update, :edit, :destroy]
     resources :genres, only:[:index, :create, :edit, :update, :destroy]

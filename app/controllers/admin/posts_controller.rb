@@ -15,6 +15,4 @@ class Admin::PostsController < ApplicationController
   def destroy
   end
 
-  def member_posts
-  end
 end
