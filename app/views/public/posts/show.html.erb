@@ -5,8 +5,10 @@
 
       <%= render 'info', post: @post %>
 
-      <% if @member.id == current_member.id %>
-        <%= link_to "編集する", edit_post_path(@post), class: "btn btn-warning text-white" %>
+      <% if member_signed_in? %>
+        <% if @member.id == current_member.id %>
+          <%= link_to "編集する", edit_post_path(@post), class: "btn btn-warning text-white" %>
+        <% end %>
       <% end %>
     </div>
 

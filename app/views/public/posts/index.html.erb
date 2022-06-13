@@ -1,19 +1,29 @@
 <div class="container mt-5">
   <div class="row">
-    <div class="col-md-6 mx-auto">
+    <div class="col-md-8 mx-auto">
       <h2>作品一覧</h2>
-      <% @posts.each do |post| %>
-        <div class="mt-3">
-          <%= link_to member_post_path(post.member , post) do %>
-            <%= image_tag post.get_post_image(100, 100) %></br>
-            <%= post.title %></br>
-          <% end %>
-          <%= link_to member_path(post.member) do %>
-          <span>by <%= post.member.name %></span>
-          <% end %>
-        </div>
-      <% end %>
-      <%= paginate @posts %>
+
+      <div class="row">
+        <% @posts.each do |post| %>
+          <div class="col-lg-4 col-sm-6 mt-3 w-100">
+            <div class="card">
+              <%= link_to member_post_path(post.member , post) do %>
+                <%= image_tag post.get_post_image(150, 150) %>
+              <% end %>
+            <div class="card-body">
+              <%= link_to member_post_path(post.member , post) do %>
+                <%= post.title %>
+              <% end %></br>
+              <%= link_to member_path(post.member) do %>
+              <span>by <%= post.member.name %></span>
+              <% end %>
+            </div>
+            </div>
+          </div>
+        <% end %>
+        <%= paginate @posts %>
+      </div>
+
     </div>
   </div>
 </div>
