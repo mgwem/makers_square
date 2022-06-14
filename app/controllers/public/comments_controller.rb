@@ -8,7 +8,7 @@ class Public::CommentsController < ApplicationController
       flash[:notice] = "コメントを投稿しました"
       redirect_to member_post_path(@post.member, @post)
     else
-      flash[:alert] = コメントを投稿できませんでした
+      flash[:alert] = "コメントを投稿できませんでした"
       redirect_back fallback_location: root_path
     end
   end

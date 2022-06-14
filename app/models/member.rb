@@ -6,9 +6,11 @@ class Member < ApplicationRecord
 
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :favorites, dependent: :destroy
 
   has_one_attached :profile_image
 
+  # ユーザ画像のサイズ変更、デフォルト画像指定
   def get_profile_image(width, height)
     unless profile_image.attached?
       file_path = Rails.root.join('app/assets/images/default-user-image.png')

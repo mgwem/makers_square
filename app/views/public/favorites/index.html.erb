@@ -1,0 +1,29 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-8 mx-auto">
+      <h2>いいねした作品</h2>
+
+      <div class="row">
+        <% @favorites.each do |favorite| %>
+          <div class="col-lg-4 col-sm-6 mt-3">
+            <div class="card h-100">
+              <%= link_to member_post_path(favorite.post.member , favorite.post) do %>
+                <%= image_tag favorite.post.get_post_image(300, 300), class: "w-100" %>
+              <% end %>
+            <div class="card-body">
+              <%= link_to member_post_path(favorite.post.member , favorite.post) do %>
+                <%= favorite.post.title %>
+              <% end %></br>
+              <%= link_to member_path(favorite.post.member) do %>
+              <span>by <%= favorite.post.member.name %></span>
+              <% end %>
+            </div>
+            </div>
+          </div>
+        <% end %>
+        <%= paginate @favorites %>
+      </div>
+
+    </div>
+  </div>
+</div>
