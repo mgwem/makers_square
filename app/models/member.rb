@@ -18,4 +18,18 @@ class Member < ApplicationRecord
     end
     profile_image.variant(resize_to_limit: [width, height]).processed
   end
+
+  # キーワード検索(ユーザー名)
+  def self.search_for(content, method)
+    if method == 'perfect'
+      Member.where(name: content)
+    elsif method == 'forward'
+      Membe.where('name LIKE ?', content+'%')
+    elsif method == 'backward'
+      Member.where('name LIKE ?', '%'+content)
+    else
+      Member.where('name LIKE ?', '%'+content+'%')
+    end
+  end
+
 end
