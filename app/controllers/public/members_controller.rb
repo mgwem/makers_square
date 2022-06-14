@@ -25,6 +25,13 @@ class Public::MembersController < ApplicationController
   end
 
   def show
+    @member = Member.find(params[:id])
+    @posts = @member.posts.limit(6)
+  end
+
+  def posts
+    @member = Member.find(params[:id])
+    @posts = @member.posts.page(params[:page]).order(id: :DESC)
   end
 
   private

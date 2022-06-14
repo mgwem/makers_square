@@ -1,2 +1,40 @@
-<h1>Public::Members#show</h1>
-<p>Find me in app/views/public/members/show.html.erb</p>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-6 mx-auto">
+      <div class="text-center mb-3">
+        <%= image_tag @member.get_profile_image(100, 100), class: "rounded-circle" %>
+      </div>
+      <h5 class="text-center"><%= @member.name %></h5>
+      <table class="table">
+      <tr>
+        <td>自己紹介</td>
+        <td>
+          <%= @member.introduction %>
+        </td>
+      </tr>
+      <tr>
+        <td>サイト情報</td>
+        <td>
+          <%= @member.website_info %>
+        </td>
+      </tr>
+    </table>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-8 mx-auto">
+      <h5>作品一覧</h5>
+      <div class="mb-3">
+        <% @posts.each do |post| %>
+          <%= link_to member_post_path(post.member, post) do %>
+            <%= image_tag post.get_post_image(150, 150) , class: "m-2" %>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="text-right">
+        <%= link_to "もっと見る", members_posts_path(@member) %>
+      </div>
+    </div>
+  </div>
+</div>

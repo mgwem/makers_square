@@ -1,0 +1,20 @@
+<div class="row">
+  <% posts.each do |post| %>
+    <div class="col-lg-4 col-sm-6 mt-3">
+      <div class="card h-100">
+        <%= link_to member_post_path(post.member , post) do %>
+          <%= image_tag post.get_post_image(300, 300), class: "w-100" %>
+        <% end %>
+      <div class="card-body">
+        <%= link_to member_post_path(post.member , post) do %>
+          <%= post.title %>
+        <% end %></br>
+        <%= link_to member_path(post.member) do %>
+        <span>by <%= post.member.name %></span>
+        <% end %>
+      </div>
+      </div>
+    </div>
+  <% end %>
+  <%= paginate posts %>
+</div>

@@ -18,6 +18,11 @@ class Admin::MembersController < ApplicationController
     end
   end
 
+  def posts
+    @member = Member.find(params[:id])
+    @posts = @member.posts.page(params[:page]).order(id: :DESC)
+  end
+
   private
 
   def member_params

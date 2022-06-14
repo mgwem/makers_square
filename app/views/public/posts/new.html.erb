@@ -1,2 +1,15 @@
-<h1>Public::Posts#new</h1>
-<p>Find me in app/views/public/posts/new.html.erb</p>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-8 mx-auto">
+      <h2>新規投稿</h2>
+      <%= form_with model: @post, local: true do |f| %>
+
+      <%= render 'form', f: f %>
+
+      <div class="form-group row">
+        <%= f.submit "新規投稿", class: "btn btn-success px-5 offset-3" %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>

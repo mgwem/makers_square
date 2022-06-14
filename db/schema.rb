@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_12_051238) do
+ActiveRecord::Schema.define(version: 2022_06_13_011128) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -79,7 +79,7 @@ ActiveRecord::Schema.define(version: 2022_06_12_051238) do
     t.integer "genre_id"
     t.string "title"
     t.text "explanation"
-    t.boolean "is_pubulished", default: true
+    t.boolean "is_published", default: true
     t.boolean "is_hidden", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

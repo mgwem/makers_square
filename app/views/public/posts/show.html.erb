@@ -1,2 +1,35 @@
-<h1>Public::Posts#show</h1>
-<p>Find me in app/views/public/posts/show.html.erb</p>
+<div class="container mt-5">
+  <div class="row">
+    <!-- 作品詳細 -->
+    <div class="col-md-6 offset-md-1">
+
+      <%= render 'info', post: @post %>
+
+      <% if member_signed_in? %>
+        <% if @member.id == current_member.id %>
+          <%= link_to "編集する", edit_post_path(@post), class: "btn btn-warning text-white" %>
+        <% end %>
+      <% end %>
+    </div>
+
+    <!-- 作者プロフィール -->
+    <div class="col-md-4 border border-secondary p-4 h-100 rounded ml-5 mt-5">
+      <p>
+        <%= image_tag @member.get_profile_image(50, 50), class: "rounded-circle" %>
+        <%= link_to member_path(@member) do %>
+        <span class="h6"><%= @member.name %></span>
+        <% end %>
+      </p>
+      <p><%= @member.introduction %></p>
+      <div class="mb-3">
+        <% @posts.each do |post| %>
+          <%= link_to member_post_path(post.member, post) do %>
+            <%= image_tag post.get_post_image(95, 95) , class: "m-1" %>
+          <% end %>
+        <% end %>
+      </div>
+      <%= link_to "もっと見る", members_posts_path(@member) %>
+    </div>
+
+  </div>
+</div>
