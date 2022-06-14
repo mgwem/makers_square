@@ -10,6 +10,31 @@
           <%= link_to "編集する", edit_post_path(@post), class: "btn btn-warning text-white" %>
         <% end %>
       <% end %>
+
+      <!-- コメント表示 -->
+      <div class="mt-5">
+        <h5>コメント (<%= @post.comments.count %>件)</h5>
+        <% @post.comments.each do |comment| %>
+          <p>
+            <%= link_to member_path(comment.member) do %>
+              <%= image_tag comment.member.get_profile_image(40, 40), class: "rounded-circle" %>
+            <% end %>
+            <%= comment.comment %>
+            <% if comment.member == current_member %>
+              <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete, class: "btn btn-sm btn-danger" %>
+            <% end %>
+          </p>
+        <% end %>
+      </div>
+      <!-- コメント入力フォーム -->
+      <% if member_signed_in? %>
+        <div>
+          <%= form_with model:[@post, @comment], local: true do |f| %>
+            <%= f.text_area :comment, rows: '3', placeholder: "コメントを入力してください", class: "form-control" %>
+            <%= f.submit "コメント投稿", class: "btn btn-success mt-3" %>
+          <% end %>
+        </div>
+      <% end %>
     </div>
 
     <!-- 作者プロフィール -->

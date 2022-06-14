@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  namespace :admin do
+    get 'comments/index'
+  end
   # devise管理者側
   devise_for :admin, skip: [:registrations, :passwords],controllers: {
     sessions: "admin/sessions"
@@ -15,8 +18,11 @@ Rails.application.routes.draw do
     root :to => "homes#top"
     get 'members/:id/posts' => "members#posts"
     resources :members, only:[:show, :edit, :update]
-    resources :posts, only:[:index, :show, :update, :edit, :destroy]
+    resources :posts, only:[:index, :show, :update, :edit, :destroy] do
+      resources :comments, only:[:destroy]
+    end
     resources :genres, only:[:index, :create, :edit, :update, :destroy]
+    resources :comments, only:[:index]
   end
 
   # 会員側
@@ -31,7 +37,9 @@ Rails.application.routes.draw do
     resources :members, only:[:edit, :update, :show] do
       resources :posts, only:[:show]
     end
-    resources :posts, only:[:new, :create, :edit, :update, :index, :destroy]
+    resources :posts, only:[:new, :create, :edit, :update, :index, :destroy] do
+      resources :comments, only:[:create, :destroy]
+    end
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

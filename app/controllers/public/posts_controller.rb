@@ -20,6 +20,7 @@ class Public::PostsController < ApplicationController
     @post = Post.find(params[:id])
     @member = Member.find(params[:member_id])
     @posts = @member.posts.limit(6).order(id: :DESC)
+    @comment = Comment.new
   end
 
   def edit
