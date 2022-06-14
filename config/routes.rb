@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
 
-  namespace :admin do
-    get 'comments/index'
-  end
   # devise管理者側
   devise_for :admin, skip: [:registrations, :passwords],controllers: {
     sessions: "admin/sessions"
@@ -34,11 +31,13 @@ Rails.application.routes.draw do
     patch 'members/withdraw' => "members#withdraw"
     get 'members/:id/posts' => "members#posts", as: :members_posts
     get 'posts/post_management' => "posts#post_management"
-    resources :members, only:[:edit, :update, :show] do
-      resources :posts, only:[:show]
-    end
     resources :posts, only:[:new, :create, :edit, :update, :index, :destroy] do
       resources :comments, only:[:create, :destroy]
+      resource :favorites, only:[:create, :destroy]
+    end
+    resources :members, only:[:edit, :update, :show] do
+      resources :posts, only:[:show]
+      resources :favorites, only:[:index]
     end
   end
 
