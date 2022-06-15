@@ -7,15 +7,9 @@
   <span class="mr-2"><%= post.created_at.strftime('%Y/%m/%d') %></span>
   <!-- いいね機能 -->
   <% if member_signed_in? %>
-    <% if post.favorited_by?(current_member) %>
-      <%= link_to post_favorites_path(post), method: :delete, class: "text-danger" do %>
-       <i class="fas fa-heart"></i> <%= post.favorites.count %>
-      <% end %>
-    <% else %>
-      <%= link_to post_favorites_path(post), method: :post, class: "text-danger" do %>
-       <i class="far fa-heart"></i> <%= post.favorites.count %>
-      <% end %>
-    <% end %>
+    <span class="favorite-btn">
+      <%= render 'public/favorites/btn', post: post %>
+    </span>
   <% else %>
     <span class="text-danger">
       <i class="fas fa-heart"></i> <%= post.favorites.count %>
