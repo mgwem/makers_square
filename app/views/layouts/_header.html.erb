@@ -9,7 +9,7 @@
             <ul class="navbar-nav ml-auto">
             <% if admin_signed_in? %>
               <li class="nav-item">
-                <%= link_to 'ユーザ 一覧', admin_root_path, class: 'nav-link text-dark' %>
+                <%= link_to 'ユーザー 一覧', admin_root_path, class: 'nav-link text-dark' %>
               </li>
               <li class="nav-item">
                 <%= link_to '作品一覧', admin_posts_path, class: 'nav-link text-dark' %>
@@ -18,8 +18,7 @@
                 <%= link_to 'ジャンル一覧', admin_genres_path, class: 'nav-link text-dark' %>
               </li>
               <li class="nav-item">
-                <!-- リンク先 -->
-                <%= link_to "コメント一覧", "/", class: 'nav-link text-dark' %>
+                <%= link_to "コメント一覧", admin_comments_path, class: 'nav-link text-dark' %>
               </li>
               <li class="nav-item">
                 <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link text-dark' %>
