@@ -31,6 +31,7 @@ Rails.application.routes.draw do
     patch 'members/withdraw' => "members#withdraw"
     get 'members/:id/posts' => "members#posts", as: :members_posts
     get 'posts/post_management' => "posts#post_management"
+    get 'searches/search' => "searches#search"
     resources :posts, only:[:new, :create, :edit, :update, :index, :destroy] do
       resources :comments, only:[:create, :destroy]
       resource :favorites, only:[:create, :destroy]

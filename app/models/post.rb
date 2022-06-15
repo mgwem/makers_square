@@ -20,4 +20,30 @@ class Post < ApplicationRecord
     favorites.exists?(member_id: member.id)
   end
 
+  # キーワード検索（作品タイトル）
+  def self.search_for_title(content, method)
+    if method == 'perfect'
+      Post.where(title: content)
+    elsif method == 'forward'
+      Post.where('title LIKE ?', content+'%')
+    elsif method == 'backward'
+      Post.where('title LIKE ?', '%'+content)
+    else
+      Post.where('title LIKE ?', '%'+content+'%')
+    end
+  end
+
+  # キーワード検索（作品説明）
+  def self.search_for_explanation(content, method)
+    if method == 'perfect'
+      Post.where(explanation: content)
+    elsif method == 'forward'
+      Post.where('explanation LIKE ?', content+'%')
+    elsif method == 'backward'
+      Post.where('explanation LIKE ?', '%'+content)
+    else
+      Post.where('explanation LIKE ?', '%'+content+'%')
+    end
+  end
+
 end

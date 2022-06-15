@@ -1,0 +1,16 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-8 mx-auto">
+      <% if @range == 'member' %>
+        <h2>ユーザー [<%= @method_ja %>]検索結果　"<%= @content %>"</h2>
+        <%= render 'public/members/index', members: @records %>
+      <% elsif @range == 'post_title' %>
+        <h2>作品タイトル [<%= @method_ja %>]検索結果　"<%= @content %>"</h2>
+        <%= render 'public/posts/index', posts: @records %>
+      <% else %>
+        <h2>作品説明 [<%= @method_ja %>]検索結果　"<%= @content %>"</h2>
+        <%= render 'public/posts/index', posts: @records %>
+      <% end %>
+    </div>
+  </div>
+</div>
