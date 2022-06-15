@@ -24,7 +24,7 @@ class Member < ApplicationRecord
     if method == 'perfect'
       Member.where(name: content)
     elsif method == 'forward'
-      Membe.where('name LIKE ?', content+'%')
+      Member.where('name LIKE ?', content+'%')
     elsif method == 'backward'
       Member.where('name LIKE ?', '%'+content)
     else

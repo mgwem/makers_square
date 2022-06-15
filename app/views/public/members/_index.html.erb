@@ -1,0 +1,18 @@
+<div class="row">
+  <% members.each do |member| %>
+    <div class="col-lg-4 col-sm-6 mt-3">
+      <div class="card h-100">
+        <%= link_to member_path(member) do %>
+          <%= image_tag member.get_profile_image(300, 300), class: "w-100" %>
+        <% end %>
+      <div class="card-body">
+        <%= link_to member_path(member) do %>
+          <%= member.name %>
+        <% end %></br>
+        <%= member.introduction %>
+      </div>
+      </div>
+    </div>
+  <% end %>
+  <%= paginate members %>
+</div>
