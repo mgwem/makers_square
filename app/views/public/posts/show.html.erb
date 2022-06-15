@@ -1,7 +1,7 @@
 <div class="container mt-5">
   <div class="row">
     <!-- 作品詳細 -->
-    <div class="col-md-6 offset-md-1">
+    <div id="post_<%= @post.id %>" class="col-md-6 offset-md-1">
 
       <%= render 'info', post: @post %>
 
@@ -12,24 +12,13 @@
       <% end %>
 
       <!-- コメント表示 -->
-      <div class="mt-5">
-        <h5>コメント (<%= @post.comments.count %>件)</h5>
-        <% @post.comments.each do |comment| %>
-          <p>
-            <%= link_to member_path(comment.member) do %>
-              <%= image_tag comment.member.get_profile_image(40, 40), class: "rounded-circle" %>
-            <% end %>
-            <%= comment.comment %>
-            <% if comment.member == current_member %>
-              <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete, class: "btn btn-sm btn-danger" %>
-            <% end %>
-          </p>
-        <% end %>
+      <div class="post_comments mt-5">
+        <%= render 'public/comments/index', post: @post %>
       </div>
       <!-- コメント入力フォーム -->
       <% if member_signed_in? %>
         <div>
-          <%= form_with model:[@post, @comment], local: true do |f| %>
+          <%= form_with model:[@post, @comment],local: false do |f| %>
             <%= f.text_area :comment, rows: '3', placeholder: "コメントを入力してください", class: "form-control" %>
             <%= f.submit "コメント投稿", class: "btn btn-success mt-3" %>
           <% end %>

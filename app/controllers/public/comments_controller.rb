@@ -4,21 +4,16 @@ class Public::CommentsController < ApplicationController
     @post = Post.find(params[:post_id])
     @comment = current_member.comments.new(comment_params)
     @comment.post_id = @post.id
-    if @comment.save
-      flash[:notice] = "コメントを投稿しました"
-      redirect_to member_post_path(@post.member, @post)
-    else
-      flash[:alert] = "コメントを投稿できませんでした"
+    unless @comment.save
+      flash[:alert] = "コメントを削除できませんでした"
       redirect_back fallback_location: root_path
     end
   end
 
   def destroy
+    @post = Post.find(params[:post_id])
     @comment = Comment.find(params[:id])
-    if @comment.destroy
-      flash[:notice] = "コメントを削除しました"
-      redirect_back fallback_location: root_path
-    else
+    unless @comment.destroy
       flash[:alert] = "コメントを削除できませんでした"
       redirect_back fallback_location: root_path
     end
