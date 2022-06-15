@@ -5,7 +5,7 @@ class Public::CommentsController < ApplicationController
     @comment = current_member.comments.new(comment_params)
     @comment.post_id = @post.id
     unless @comment.save
-      flash[:alert] = "コメントを削除できませんでした"
+      flash[:alert] = "コメントを投稿できませんでした"
       redirect_back fallback_location: root_path
     end
   end

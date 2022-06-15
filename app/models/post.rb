@@ -6,6 +6,10 @@ class Post < ApplicationRecord
 
   has_one_attached :post_image
 
+  validates :genre_id, presence: true
+  validates :title, presence: true
+  validates :is_published, presence: true
+
   # 作品写真のサイズ変更、デフォルト画像指定
   def get_post_image(width, height)
     unless post_image.attached?

@@ -10,6 +10,9 @@ class Member < ApplicationRecord
 
   has_one_attached :profile_image
 
+  validates :name, presence: true
+  validates :email, presence: true
+
   # ユーザ画像のサイズ変更、デフォルト画像指定
   def get_profile_image(width, height)
     unless profile_image.attached?
