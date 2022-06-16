@@ -21,7 +21,7 @@ class Public::PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @member = Member.find(params[:member_id])
-    @posts = @member.posts.limit(6).order(id: :DESC)
+    @posts = @member.posts.recent.limit(6)
     @comment = Comment.new
     @post_tags = @post.tags
   end
@@ -59,17 +59,17 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.page(params[:page]).order(id: :DESC)
+    @posts = Post.recent.page(params[:page])
   end
 
   def post_management
     @member = current_member
-    @posts = @member.posts.order(id: :DESC)
+    @posts = @member.posts.sorted
   end
 
   def tag_search
     @tag = Tag.find(params[:tag_id])
-    @posts = @tag.posts.page(params[:page]).order(id: :DESC)
+    @posts = @tag.posts.recent.page(params[:page])
   end
 
   private
