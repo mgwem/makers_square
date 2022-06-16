@@ -23,6 +23,7 @@ class Admin::PostsController < ApplicationController
       redirect_to admin_post_path(@post)
     else
       @genres = Genre.all
+      @tag_list = @post.tags.pluck(:tag_name).join(",")
       render :edit
     end
   end
@@ -34,6 +35,7 @@ class Admin::PostsController < ApplicationController
       redirect_to admin_posts_path
     else
       @genres = Genre.all
+      @tag_list = @post.tags.pluck(:tag_name).join(",")
       render :edit
     end
   end

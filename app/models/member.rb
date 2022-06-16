@@ -12,6 +12,7 @@ class Member < ApplicationRecord
 
   validates :name, presence: true
   validates :email, presence: true
+  validates :is_void, inclusion:{in: [true, false]}
 
   # ユーザ画像のサイズ変更、デフォルト画像指定
   def get_profile_image(width, height)

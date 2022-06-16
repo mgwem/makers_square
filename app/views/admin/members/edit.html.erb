@@ -8,8 +8,8 @@
         <div class="form-group row">
           <%= f.label :is_void, "会員ステータス", class: "col-md-3 col-form-label" %>
           <div class="col-md-5 my-2">
-            <%= f.radio_button :is_void, false, class: "mr-3" %>
-            <%= f.label :is_void, "有効", value: false %>
+            <%= f.radio_button :is_void, false %>
+            <%= f.label :is_void, "有効", value: false, class: "mr-3" %>
             <%= f.radio_button :is_void, true %>
             <%= f.label :is_void, "無効", value: true %>
           </div>

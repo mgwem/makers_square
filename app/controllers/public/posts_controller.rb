@@ -41,6 +41,7 @@ class Public::PostsController < ApplicationController
       redirect_to member_post_path(@post.member, @post)
     else
       @genres = Genre.all
+      @tag_list = @post.tags.pluck(:tag_name).join(",")
       render :edit
     end
   end
@@ -52,6 +53,7 @@ class Public::PostsController < ApplicationController
       redirect_to member_path(@post.member)
     else
       @genres = Genre.all
+      @tag_list = @post.tags.pluck(:tag_name).join(",")
       render :edit
     end
   end
