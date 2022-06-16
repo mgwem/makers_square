@@ -10,8 +10,6 @@ Rails.application.routes.draw do
     sessions: "public/sessions"
   }
 
-  root :to => "public/homes#top"
-
   # 管理者側
   namespace :admin do
     root :to => "homes#top"
@@ -26,6 +24,7 @@ Rails.application.routes.draw do
 
   # 会員側
   scope module: :public do
+    root :to => "homes#top"
     get "about" => "homes#about"
     get 'members/my_page' => "members#my_page"
     get 'members/unsubscribe' => "members#unsubscribe"

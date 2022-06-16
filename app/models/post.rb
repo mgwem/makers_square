@@ -10,7 +10,7 @@ class Post < ApplicationRecord
 
   validates :genre_id, presence: true
   validates :title, presence: true
-  validates :is_published, presence: true
+  validates :is_published, inclusion:{in: [true, false]}
 
   # 作品写真のサイズ変更、デフォルト画像指定
   def get_post_image(width, height)
