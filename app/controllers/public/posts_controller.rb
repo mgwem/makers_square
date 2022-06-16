@@ -7,7 +7,9 @@ class Public::PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.member_id = current_member.id
+    tag_list = params[:post][:tag_name].split(',')
     if @post.save
+      @post.save_tag(tag_list)
       flash[:notice] = "作品が投稿されました"
       redirect_to member_post_path(@post.member, @post)
     else
@@ -21,16 +23,20 @@ class Public::PostsController < ApplicationController
     @member = Member.find(params[:member_id])
     @posts = @member.posts.limit(6).order(id: :DESC)
     @comment = Comment.new
+    @post_tags = @post.tags
   end
 
   def edit
     @post = Post.find(params[:id])
     @genres = Genre.all
+    @tag_list = @post.tags.pluck(:tag_name).join(",")
   end
 
   def update
     @post = Post.find(params[:id])
+    tag_list = params[:post][:tag_name].split(",")
     if @post.update(post_params)
+      @post.save_tag(tag_list)
       flash[:notice] = "作品を更新しました"
       redirect_to member_post_path(@post.member, @post)
     else
@@ -57,6 +63,11 @@ class Public::PostsController < ApplicationController
   def post_management
     @member = current_member
     @posts = @member.posts.order(id: :DESC)
+  end
+
+  def tag_search
+    @tag = Tag.find(params[:tag_id])
+    @posts = @tag.posts.page(params[:page]).order(id: :DESC)
   end
 
   private

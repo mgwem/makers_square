@@ -7,8 +7,11 @@
       <% elsif @range == 'post_title' %>
         <h2>作品タイトル [<%= @method_ja %>]検索結果　"<%= @content %>"</h2>
         <%= render 'public/posts/index', posts: @records %>
-      <% else %>
+      <% elsif @range == 'post_explanation' %>
         <h2>作品説明 [<%= @method_ja %>]検索結果　"<%= @content %>"</h2>
+        <%= render 'public/posts/index', posts: @records %>
+      <% elsif @range == 'tag' %>
+        <h2>タグ [<%= @method_ja %>]検索結果　"<%= @content %>"</h2>
         <%= render 'public/posts/index', posts: @records %>
       <% end %>
     </div>

@@ -6,9 +6,12 @@ class Public::SearchesController < ApplicationController
     if @range == 'member'
       @records = Member.search_for(@content, @method).page(params[:page]).order(id: :DESC)
     elsif @range == 'post_title'
-      @records = Post.search_for_title(@content, @method).page(params[:page]).order(id: :DESC)
-    else
-      @records = Post.search_for_explanation(@content, @method).page(params[:page]).order(id: :DESC)
+      @records = Post.search_title_for(@content, @method).page(params[:page]).order(id: :DESC)
+    elsif @range == 'post_explanation'
+      @records = Post.search_explanation_for(@content, @method).page(params[:page]).order(id: :DESC)
+    elsif @range == 'tag'
+      tags = Tag.search_for(@content, @method)
+      @records = Kaminari.paginate_array(tags).page(params[:page])
     end
     # @method日本語表記
     if @method == 'perfect'

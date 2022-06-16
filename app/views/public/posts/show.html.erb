@@ -5,6 +5,15 @@
 
       <%= render 'info', post: @post %>
 
+      <!-- タグ表示 -->
+      <div class= "mb-4 mt-5">
+        <% @post_tags.each do |tag| %>
+          <%= link_to tag_tag_search_path(tag_id: tag.id) do %>
+            <span class="pr-2">#<%= tag.tag_name %></span>
+          <% end %>
+        <% end %>
+      </div>
+
       <% if member_signed_in? %>
         <% if @member.id == current_member.id %>
           <%= link_to "編集する", edit_post_path(@post), class: "btn btn-warning text-white" %>

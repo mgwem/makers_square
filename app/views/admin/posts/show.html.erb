@@ -5,6 +5,13 @@
 
       <%= render 'public/posts/info', post: @post %>
 
+      <!-- タグ表示 -->
+      <div class= "mb-4 mt-5">
+        <% @post_tags.each do |tag| %>
+          <span class="pr-2">#<%= tag.tag_name %></span>
+        <% end %>
+      </div>
+
       <%= link_to "編集する", edit_admin_post_path(@post), class: "btn btn-warning text-white" %>
 
       <!-- コメント表示 -->
