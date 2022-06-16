@@ -3,6 +3,8 @@ class Post < ApplicationRecord
   belongs_to :member
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :tag_maps, dependent: :destroy
+  has_many :tags, through: :tag_maps
 
   has_one_attached :post_image
 
@@ -25,7 +27,7 @@ class Post < ApplicationRecord
   end
 
   # キーワード検索（作品タイトル）
-  def self.search_for_title(content, method)
+  def self.search_title_for(content, method)
     if method == 'perfect'
       Post.where(title: content)
     elsif method == 'forward'
@@ -38,7 +40,7 @@ class Post < ApplicationRecord
   end
 
   # キーワード検索（作品説明）
-  def self.search_for_explanation(content, method)
+  def self.search_explanation_for(content, method)
     if method == 'perfect'
       Post.where(explanation: content)
     elsif method == 'forward'
@@ -47,6 +49,24 @@ class Post < ApplicationRecord
       Post.where('explanation LIKE ?', '%'+content)
     else
       Post.where('explanation LIKE ?', '%'+content+'%')
+    end
+  end
+
+  #タグテーブルへの保存
+  def save_tag(sent_tags)
+    current_tags = self.tags.pluck(:tag_name) unless self.tags.nil?
+    old_tags = current_tags - sent_tags
+    new_tags = sent_tags - current_tags
+
+    # 入力されたタグからタグテーブルにあるタグを削除
+    old_tags.each do |old|
+      self.tags.delete Tag.find_by(tag_name: old)
+    end
+
+    # 入力されたタグからタグテーブルにないタグは追加
+    new_tags.each do |new|
+      new_post_tag = Tag.find_or_create_by(tag_name: new)
+      self.tags << new_post_tag
     end
   end
 

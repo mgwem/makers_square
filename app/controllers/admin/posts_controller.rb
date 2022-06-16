@@ -5,16 +5,20 @@ class Admin::PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @post_tags = @post.tags
   end
 
   def edit
     @post = Post.find(params[:id])
     @genres = Genre.all
+    @tag_list = @post.tags.pluck(:tag_name).join(",")
   end
 
   def update
     @post = Post.find(params[:id])
+    tag_list = params[:post][:tag_name].split(',')
     if @post.update(post_params)
+      @post.save_tag(tag_list)
       flash[:notice] = "作品を更新しました"
       redirect_to admin_post_path(@post)
     else
