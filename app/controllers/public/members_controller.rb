@@ -1,4 +1,6 @@
 class Public::MembersController < ApplicationController
+  before_action :ensure_guest_member, only: [:edit]
+
   def my_page
     @member = current_member
   end
@@ -54,6 +56,13 @@ class Public::MembersController < ApplicationController
 
   def member_params
     params.require(:member).permit(:name, :email, :introduction, :website_info, :profile_image)
+  end
+
+  def ensure_guest_member
+    @member = Member.find(params[:id])
+    if @member.name == "guest"
+      redirect_to members_my_page_path, notice: "ゲストユーザーはユーザー情報編集画面へ遷移できません"
+    end
   end
 
 end

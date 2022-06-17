@@ -24,6 +24,14 @@ class Member < ApplicationRecord
   # 公開作品を新着順に並び替え
   scope :recent_member, -> { valid.active.sorted }
 
+  # ゲストログイン
+  def self.guest
+    find_or_create_by!(name:'guest',email:'guest@example.com') do |member|
+      member.password = SecureRandom.urlsafe_base64
+      member.name = 'guest'
+    end
+  end
+
   # ユーザ画像のサイズ変更、デフォルト画像指定
   def get_profile_image(width, height)
     unless profile_image.attached?
