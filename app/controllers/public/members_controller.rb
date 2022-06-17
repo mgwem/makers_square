@@ -21,7 +21,23 @@ class Public::MembersController < ApplicationController
     @member = current_member
   end
 
+  # 退会処理
   def withdraw
+    member = current_member
+    member.update(is_deleted: true)
+    # 退会した会員が投稿した作品を非表示
+    posts = member.posts
+    posts.each do |post|
+      post.update(is_hidden: true)
+    end
+    # 退会した会員が投稿したコメントを非表示
+    comments = member.comments
+    comments.each do |comment|
+      comment.update(is_hidden: true)
+    end
+    reset_session
+    flash[:notice] = "退会しました"
+    redirect_to root_path
   end
 
   def show

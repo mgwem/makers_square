@@ -2,12 +2,11 @@
   <div class="row">
     <div class="col-md-6 mx-auto">
       <h2 class="text-center mb-4">本当に退会しますか?</h2>
-      <p class="text-center">退会するとこれまで投稿した内容は全て閲覧できなくなります。</p>
+      <p class="text-center">退会するとこれまで投稿した投稿は閲覧できなくなります。</p>
       <p class="text-center mb-5">退会する場合は「退会する」をクリックしてください。</p>
       <div class="text-center">
         <%= link_to "退会しない", members_my_page_path, class: "btn btn-success mx-4" %>
-        <!-- リンク先仮 -->
-        <%= link_to "退会する", "/", class: "btn btn-danger mx-4" %>
+        <%= link_to "退会する", members_withdraw_path,method: :patch, class: "btn btn-danger mx-4" %>
         </div>
     </div>
   </div>

@@ -13,6 +13,16 @@ class Member < ApplicationRecord
   validates :name, presence: true
   validates :email, presence: true
   validates :is_void, inclusion:{in: [true, false]}
+  validates :is_deleted, inclusion:{in: [true, false]}
+
+  # 管理ステータス「有効」の会員を取得
+  scope :valid, -> { where(is_void: false) }
+  # 会員ステータス「利用中」の会員を取得
+  scope :active, -> { where(is_deleted: false) }
+  # created_atカラムを降順に並び替え
+  scope :sorted, -> { order(created_at: :DESC) }
+  # 公開作品を新着順に並び替え
+  scope :recent_member, -> { valid.active.sorted }
 
   # ユーザ画像のサイズ変更、デフォルト画像指定
   def get_profile_image(width, height)
