@@ -22,6 +22,15 @@ class Public::MembersController < ApplicationController
   end
 
   def withdraw
+    member = current_member
+    member.update(is_deleted: true)
+    posts = member.posts
+    posts.each do |post|
+      post.update(is_hidden: true)
+    end
+    reset_session
+    flash[:notice] = "退会しました"
+    redirect_to root_path
   end
 
   def show

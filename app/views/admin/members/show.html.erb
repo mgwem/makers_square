@@ -14,17 +14,26 @@
       <table class="table">
         <%= render 'public/members/info', member: @member %>
         <tr>
-          <th>ユーザーステータス</th>
+          <th>会員ステータス</th>
+          <td>
+            <% if @member.is_deleted == true %>
+              <span class="text-danger">退会済み</span>
+            <% elsif @member.is_deleted == false %>
+              <span class="text-success">利用中</span>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <th>管理ステータス</th>
           <td>
             <% if @member.is_void == true %>
-                <span class="text-danger">無効</span>
-              <% elsif @member.is_void == false %>
-                <span class="text-success">有効</span>
-              <% end %>
+              <span class="text-danger">無効</span>
+            <% elsif @member.is_void == false %>
+              <span class="text-success">有効</span>
+            <% end %>
           </td>
         </tr>
       </table>
-      <!-- リンク先仮 -->
       <%= link_to "作品一覧", admin_path(@member), class: "btn btn-success mt-5 px-5" %>
     </div>
 

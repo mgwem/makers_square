@@ -83,6 +83,7 @@ ActiveRecord::Schema.define(version: 2022_06_16_052803) do
     t.text "introduction"
     t.text "website_info"
     t.boolean "is_void", default: false, null: false
+    t.boolean "is_deleted", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_members_on_email", unique: true

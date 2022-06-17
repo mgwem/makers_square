@@ -8,7 +8,8 @@
           <th></th>
           <th>ユーザー名</th>
           <th>メールアドレス</th>
-          <th>ステータス</th>
+          <th>会員ステータス</th>
+          <th>管理ステータス</th>
         </tr>
         <% @members.each do |member| %>
           <tr>
@@ -25,6 +26,13 @@
             </td>
             <td>
               <%= member.email %>
+            </td>
+            <td>
+              <% if member.is_deleted == true %>
+                <span class="text-danger">退会済み</span>
+              <% elsif member.is_deleted == false %>
+                <span class="text-success">利用中</span>
+              <% end %>
             </td>
             <td>
               <% if member.is_void == true %>

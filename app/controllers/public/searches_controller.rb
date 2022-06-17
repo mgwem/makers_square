@@ -4,7 +4,7 @@ class Public::SearchesController < ApplicationController
     @content = params[:content]
     @method = params[:method]
     if @range == 'member'
-      @records = Member.search_for(@content, @method).page(params[:page]).order(id: :DESC)
+      @records = Member.search_for(@content, @method).recent_member.page(params[:page])
     elsif @range == 'post_title'
       @records = Post.search_title_for(@content, @method).recent.page(params[:page])
     elsif @range == 'post_explanation'
