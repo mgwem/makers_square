@@ -11,6 +11,16 @@ class Post < ApplicationRecord
   validates :genre_id, presence: true
   validates :title, presence: true
   validates :is_published, inclusion:{in: [true, false]}
+  validates :is_hidden, inclusion:{in: [true, false]}
+
+  # 作品ステータス「有効」の作品を取得（管理者側公開設定）
+  scope :activate, -> { where(is_hidden: false) }
+  # 公開ステータス「公開」の作品を取得（会員側公開設定）
+  scope :published, -> { where(is_published: true) }
+  # created_atカラムを降順に並び替え
+  scope :sorted, -> { order(created_at: :DESC) }
+  # 公開作品を新着順に並び替え
+  scope :recent, -> { activate.published.sorted }
 
   # 作品写真のサイズ変更、デフォルト画像指定
   def get_post_image(width, height)

@@ -2,7 +2,9 @@
   <div class="row">
     <!-- 作品詳細 -->
     <div id="post_<%= @post.id %>" class="col-md-6 offset-md-1">
-
+      <% if @post.is_hidden == true %>
+        <p class="text-danger">この作品は管理者によって公開を制限されています</p>
+      <% end %>
       <%= render 'info', post: @post %>
 
       <!-- タグ表示 -->
