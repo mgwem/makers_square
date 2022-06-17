@@ -27,8 +27,7 @@
       <% end %>
 
       <h2>ゲストログイン</h2>
-      <!-- ゲストログインリンク仮 -->
-      <%= link_to "ゲストログイン", "/", class: "btn btn-warning my-2 text-light" %>
+      <%= link_to "ゲストログイン", members_gest_sign_in_path, method: :post, class: "btn btn-warning my-2 text-light" %>
 
       <h5 class="mt-5">新規会員登録は<%= render "public/shared/links" %>から</h5>
     </div>
