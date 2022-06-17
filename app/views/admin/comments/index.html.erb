@@ -7,6 +7,7 @@
           <th>投稿日時</th>
           <th>ユーザー名</th>
           <th>コメント</th>
+          <th>公開ステータス</th>
           <th></th>
         </tr>
         <% @comments.each do |comment| %>
@@ -20,6 +21,13 @@
             <td>
               <%= link_to admin_post_path(comment.post) do %>
                 <%= comment.comment %>
+              <% end %>
+            </td>
+            <td>
+              <% if comment.is_hidden == true %>
+                <span class="text-danger">非公開</span>
+              <% elsif comment.is_hidden == false %>
+                <span class="text-success">公開</span>
               <% end %>
             </td>
             <td>

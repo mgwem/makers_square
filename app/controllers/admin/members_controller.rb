@@ -11,33 +11,46 @@ class Admin::MembersController < ApplicationController
     @member = Member.find(params[:id])
     if @member.update(member_params)
       posts = @member.posts
+      comments = @member.comments
 
       # 会員ステータスが変更になった時
       if @member.saved_change_to_is_deleted?
-        # 会員ステータスが「退会済み」に変更で作品を非表示
+        # 会員ステータスが「退会済み」に変更で作品・コメントを非表示
         if @member.is_deleted == true
           posts.each do |post|
             post.update(is_hidden: true)
           end
-        # 会員ステータスが「利用中」に変更で作品を表示
+          comments.each do |comment|
+            comment.update(is_hidden: true)
+          end
+        # 会員ステータスが「利用中」に変更で作品・コメントを表示
         elsif @member.is_deleted == false && @member.is_void == false
           posts.each do |post|
             post.update(is_hidden: false)
+          end
+          comments.each do |comment|
+            comment.update(is_hidden: false)
           end
         end
       end
 
       # 管理ステータスが変更になった時
       if @member.saved_change_to_is_void?
-        # 管理ステータスが「無効」に変更で作品を非表示
+        # 管理ステータスが「無効」に変更で作品・コメントを非表示
         if @member.is_void == true
           posts.each do |post|
             post.update(is_hidden: true)
           end
-        # 管理ステータスが「有効」に変更で作品を表示
+          comments.each do |comment|
+            comment.update(is_hidden: true)
+          end
+        # 管理ステータスが「有効」に変更で作品・コメントを表示
         elsif @member.is_void == false && @member.is_deleted == false
           posts.each do |post|
             post.update(is_hidden: false)
+          end
+          comments.each do |comment|
+            comment.update(is_hidden: false)
           end
         end
       end
