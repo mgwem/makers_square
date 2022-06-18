@@ -58,7 +58,6 @@ class Admin::MembersController < ApplicationController
       redirect_to admin_member_path(@member)
     else
       render :edit
-      flash[:alert] = "ユーザ情報の更新に失敗しました"
     end
   end
 

@@ -8,7 +8,9 @@
         <%= render 'public/posts/form', f: f %>
 
         <div class="form-group row">
-          <%= f.label :is_hidden, "作品ステータス", class: "col-md-3 col-form-label" %>
+          <div class="col-md-3">
+            <%= f.label :is_hidden, "作品ステータス", class: "col-form-label" %>
+          </div>
           <div class="col-md-5 my-2">
             <%= f.radio_button :is_hidden, false %>
             <%= f.label :is_hidden, "有効", value: false, class: "mr-3" %>
