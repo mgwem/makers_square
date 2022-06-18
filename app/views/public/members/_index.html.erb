@@ -6,10 +6,15 @@
           <%= image_tag member.get_profile_image(300, 300), class: "w-100" %>
         <% end %>
       <div class="card-body">
+        <div class="text-center">
         <%= link_to member_path(member) do %>
           <%= member.name %>
-        <% end %></br>
+        <% end %>
+        </div>
         <%= member.introduction %>
+        <div class="text-center mt-2">
+          <%= render "public/relationships/btn", member: member %>
+        </div>
       </div>
       </div>
     </div>

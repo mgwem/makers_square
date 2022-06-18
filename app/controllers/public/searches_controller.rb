@@ -6,11 +6,13 @@ class Public::SearchesController < ApplicationController
     if @range == 'member'
       @records = Member.search_for(@content, @method).recent_member.page(params[:page])
     elsif @range == 'post_title'
+      @range_ja = "作品タイトル"
       @records = Post.search_title_for(@content, @method).recent.page(params[:page])
     elsif @range == 'post_explanation'
+      @range_ja = "作品説明"
       @records = Post.search_explanation_for(@content, @method).recent.page(params[:page])
     elsif @range == 'tag'
-      tags = Tag.search_for(@content, @method)
+      tags = Tag.search_for(@content, @method).reverse
       @records = Kaminari.paginate_array(tags).page(params[:page])
     end
     # @method日本語表記

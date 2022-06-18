@@ -43,6 +43,7 @@
         <%= image_tag @member.get_profile_image(50, 50), class: "rounded-circle" %>
         <%= link_to member_path(@member) do %>
         <span class="h6"><%= @member.name %></span>
+        <%= render "public/relationships/btn", member: @member %>
         <% end %>
       </p>
       <p><%= @member.introduction %></p>

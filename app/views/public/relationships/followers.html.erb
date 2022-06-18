@@ -1,0 +1,12 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-8 mx-auto">
+      <h2>フォロワー一覧</h2>
+      <% if @members.exists? %>
+        <%= render 'public/members/index', members: @members %>
+      <% else %>
+       <h5 class="mt-5">フォロワーはいません</h5>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -7,6 +7,10 @@ class Member < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :relationships, class_name: "Relationship", foreign_key: "following_id", dependent: :destroy
+  has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
+  has_many :followings, through: :relationships, source: :followed
+  has_many :followers, through: :reverse_of_relationships, source: :following
 
   has_one_attached :profile_image
 
@@ -52,6 +56,21 @@ class Member < ApplicationRecord
     else
       Member.where('name LIKE ?', '%'+content+'%')
     end
+  end
+
+  # フォローする
+  def follow(member_id)
+    relationships.create(followed_id: member_id)
+  end
+
+  # フォロー外す
+  def unfollow(member_id)
+    relationships.find_by(followed_id: member_id).destroy
+  end
+
+  # フォローしているかどうかの判定
+  def following?(member)
+    followings.include?(member)
   end
 
 end

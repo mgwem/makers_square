@@ -5,6 +5,9 @@
         <%= image_tag @member.get_profile_image(100, 100), class: "rounded-circle" %>
       </div>
       <h5 class="text-center"><%= @member.name %></h5>
+      <div class="text-center mb-4">
+        <%= render 'public/relationships/btn', member: @member %>
+      </div>
       <table class="table">
       <tr>
         <td>自己紹介</td>

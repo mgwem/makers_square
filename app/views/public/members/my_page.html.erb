@@ -48,7 +48,11 @@
         </table>
 
         <div>
-          <%= link_to "いいね一覧", member_favorites_path(@member) %>
+          <ul>
+            <li><%= link_to "いいね一覧", member_favorites_path(@member) %></li>
+            <li><%= link_to "フォロー一覧", member_followings_path(@member) %></li>
+            <li><%= link_to "フォロワー一覧", member_followers_path(@member) %></li>
+          </ul>
         </div>
 
       </div>
