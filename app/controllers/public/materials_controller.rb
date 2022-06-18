@@ -1,14 +1,22 @@
 class Public::MaterialsController < ApplicationController
 
   def index
-    @material = Material.new
     @materials = current_member.materials
   end
 
   def new
+    @material = Material.new
   end
 
   def create
+    @material = Material.new(material_params)
+    @material.member_id = current_member.id
+    if @material.save
+      flash[:notice] = "材料が登録されました"
+      redirect_to materials_path
+    else
+      render :new
+    end
   end
 
   def edit

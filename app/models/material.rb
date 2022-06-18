@@ -4,6 +4,10 @@ class Material < ApplicationRecord
 
   has_one_attached :material_image
 
+  validates :member_id, presence: true
+  validates :name, presence: true
+  validates :is_stocked, inclusion:{in: [true, false]}
+
   # 材料写真のサイズ変更、デフォルト画像指定
   def get_material_image(width, height)
     unless material_image.attached?
