@@ -4,8 +4,7 @@
       <h2>マイページ</h2>
       <div class="text-center mb-3">
         <%= link_to "作品管理", posts_post_management_path, class: "btn btn-success mx-3 p-4" %>
-        <!-- リンク先仮 -->
-        <%= link_to "材料管理", "/", class: "btn btn-info mx-3 p-4" %>
+        <%= link_to "材料管理", materials_path, class: "btn btn-info mx-3 p-4" %>
       </div>
       <div class="text-right">
         <%= link_to "自分のプロフィールを見る", member_path(@member) %>
