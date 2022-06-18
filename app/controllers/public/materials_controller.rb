@@ -20,9 +20,28 @@ class Public::MaterialsController < ApplicationController
   end
 
   def edit
+    @material = Material.find(params[:id])
+  end
+
+  def update
+    @material = Material.find(params[:id])
+    if @material.update(material_params)
+      flash[:notice] = "材料の情報を更新しました"
+      redirect_to materials_path
+    else
+      render :edit
+    end
   end
 
   def destroy
+    @material = Material.find(params[:id])
+    if @material.destroy
+      flash[:notice] = "材料を削除しました"
+      redirect_to materials_path
+    else
+      flash[:alert] = "材料を削除できませんでした"
+      redirect_to materials_path
+    end
   end
 
   private
