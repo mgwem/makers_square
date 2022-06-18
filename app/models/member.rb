@@ -15,7 +15,7 @@ class Member < ApplicationRecord
   has_one_attached :profile_image
 
   validates :name, presence: true
-  validates :email, presence: true
+  validates :email, presence: true, uniqueness: true
   validates :is_void, inclusion:{in: [true, false]}
   validates :is_deleted, inclusion:{in: [true, false]}
 
