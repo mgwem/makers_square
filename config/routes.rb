@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     registrations: "public/registrations",
     sessions: "public/sessions"
   }
-  
+
   devise_scope :member do
     post 'members/gest_sign_in', to: "public/sessions#guest_sign_in"
   end
@@ -43,6 +43,9 @@ Rails.application.routes.draw do
     resources :members, only:[:edit, :update, :show] do
       resources :posts, only:[:show]
       resources :favorites, only:[:index]
+      resource :relationships, only:[:create, :destroy]
+      get 'followings' => "relationships#followings"
+      get 'followers' => "relationships#followers"
     end
     resources :tags, only:[] do
       get 'tag_search' => "posts#tag_search"
