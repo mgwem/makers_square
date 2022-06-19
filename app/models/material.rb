@@ -1,6 +1,7 @@
 class Material < ApplicationRecord
 
   belongs_to :member
+  has_many :post_materials, dependent: :destroy
 
   has_one_attached :material_image
 
