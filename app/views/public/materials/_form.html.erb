@@ -1,0 +1,46 @@
+<div class="form-group row">
+  <div class="col-md-4">
+    <%= f.label :material_image, "材料画像", class:"col-form-label" %>
+  </div>
+  <div class="col-md-5 form_control">
+    <%= f.file_field :material_image, accept: "image/*" %>
+  </div>
+</div>
+<div class="form-group row">
+  <div class="col-md-4">
+    <%= f.label :name, "材料名", class:"col-form-label" %>
+  </div>
+  <div class="col-md-7">
+    <%= f.text_field :name, placeholder: "材料名", class:"form-control" %>
+  </div>
+</div>
+<div class="form-group row">
+  <div class="col-md-4">
+    <%= f.label :store, "購入店舗", class:"col-form-label" %>
+  </div>
+  <div class="col-md-7">
+    <%= f.text_field :store, placeholder: "購入店舗名", class:"form-control" %>
+  </div>
+</div>
+<div class="form-group row">
+  <div class="col-md-4">
+    <%= f.label :price, "購入金額", class:"col-form-label" %>
+  </div>
+  <div class="col-md-5">
+    <div class="d-flex">
+    <%= f.text_field :price, placeholder: "100", class:"form-control" %>
+    <span class="my-auto ml-2">円</span>
+    </div>
+  </div>
+</div>
+<div class="form-group row">
+  <div class="col-md-4">
+    <%= f.label :is_stocked, "在庫", class: "col-form-label" %>
+  </div>
+  <div class="col-md-5 my-2">
+    <%= f.radio_button :is_stocked, false, checked: true %>
+    <%= f.label :is_stocked, "あり", value: false, class: "mr-3" %>
+    <%= f.radio_button :is_stocked, true %>
+    <%= f.label :is_stocked, "なし", value: true, class: "mr-3" %>
+  </div>
+</div>

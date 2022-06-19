@@ -1,0 +1,46 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-8 mx-auto">
+      <h2>材料管理</h2>
+      <div class="text-center mt-3 mb-5">
+        <%= link_to "材料の新規登録", new_material_path, class: "btn btn-success" %>
+      </div>
+      <% if @materials.exists? %>
+        <table class="table">
+          <tr>
+            <th></th>
+            <th>材料名</th>
+            <th>購入店舗</th>
+            <th>購入金額(円)</th>
+            <th>在庫管理</th>
+            <th></th>
+            <th></th>
+          </tr>
+          <% @materials.each do |material| %>
+            <tr>
+              <td><%= image_tag material.get_material_image(60, 60) %></td>
+              <td><%= material.name %></td>
+              <td><%= material.store %></td>
+              <td><%= material.price %></td>
+              <td>
+                <% if material.is_stocked == true %>
+                  <span class="text-danger">在庫なし</span>
+                <% elsif material.is_stocked == false %>
+                  <span class="text-success">在庫あり</span>
+                <% end %>
+              </td>
+              <td>
+                <%= link_to "編集", edit_material_path(material), class: "btn btn-warning text-white" %>
+              </td>
+              <td>
+                <%= link_to "削除", material_path(material), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %>
+              </td>
+            </tr>
+          <% end %>
+        <% else %>
+          <h5 class="text-center">現在登録している材料はありません</h5>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>

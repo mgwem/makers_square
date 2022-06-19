@@ -23,10 +23,11 @@
             <%= f.label :is_void, "無効", value: true %>
           </div>
         </div>
-        <div class="form-group text-center">
+        <div class="form-group text-center mb-5">
           <%= f.submit "変更保存", class: "btn btn-success px-5 mt-2" %>
         </div>
       <% end %>
+      <p><%= link_to "会員詳細画面に戻る", admin_member_path(@member) %></p>
     </div>
   </div>
 </div>

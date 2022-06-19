@@ -12,6 +12,7 @@ class Post < ApplicationRecord
   validates :title, presence: true
   validates :is_published, inclusion:{in: [true, false]}
   validates :is_hidden, inclusion:{in: [true, false]}
+  validates :post_image, presence: true
 
   # 作品ステータス「有効」の作品を取得（管理者側公開設定）
   scope :activate, -> { where(is_hidden: false) }
