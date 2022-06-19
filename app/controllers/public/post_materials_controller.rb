@@ -10,7 +10,7 @@ class Public::PostMaterialsController < ApplicationController
     @post_material.post_id = @post.id
   end
 
-  def edit
+  def index
   end
 
   def update

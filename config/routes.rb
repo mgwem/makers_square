@@ -43,7 +43,7 @@ Rails.application.routes.draw do
     resources :posts, only:[:new, :create, :edit, :update, :index, :destroy] do
       resources :comments, only:[:create, :destroy]
       resource :favorites, only:[:create, :destroy]
-      resources :post_materials, only:[:new, :create, :edit, :update, :destroy]
+      resources :post_materials, only:[:new, :create, :index, :update, :destroy]
     end
     resources :members, only:[:edit, :update, :show] do
       resources :posts, only:[:show]
