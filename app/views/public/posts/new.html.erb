@@ -6,10 +6,11 @@
 
       <%= form_with model: @post, local: true do |f| %>
         <%= render 'form', f: f %>
-        <div class="form-group row">
+        <div class="form-group row mb-5">
           <%= f.submit "新規投稿", class: "btn btn-success px-5 offset-3" %>
         </div>
       <% end %>
+      <p><%= link_to "作品管理画面に戻る", posts_post_management_path %></p>
     </div>
   </div>
 </div>

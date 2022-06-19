@@ -5,12 +5,13 @@
       <%= render 'layouts/errors', obj: @material %>
       <%= form_with model: @material, local: true do |f| %>
         <%= render 'form', f: f %>
-        <div class="form-group row">
+        <div class="form-group row mb-5">
           <div class="col-5 offset-4">
-            <%= f.submit "登録", class: "btn btn-success px-5" %>
+            <%= f.submit "変更を保存", class: "btn btn-success px-5" %>
           </div>
         </div>
       <% end %>
+      <p><%= link_to "材料管理画面に戻る", materials_path %></p>
     </div>
   </div>
 </div>
