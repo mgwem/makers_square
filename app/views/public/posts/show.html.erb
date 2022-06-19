@@ -16,6 +16,14 @@
         <% end %>
       </div>
 
+      <!-- 使用材料 -->
+      <div>
+        <% @materials.each do |material| %>
+          <%= image_tag material.get_material_image(70, 70) %>
+          <%= material.name %>
+        <% end %>
+      </div>
+
       <% if member_signed_in? %>
         <% if @member.id == current_member.id %>
           <%= link_to "編集する", edit_post_path(@post), class: "btn btn-warning text-white" %>

@@ -37,9 +37,9 @@
           </td>
           <td>
             <% if post.post_materials.exists? %>
-              <%= link_to "材料編集", post_post_materials_path(post), class: "btn btn-warning text-white" %>
+              <%= link_to "材料編集", post_post_materials_path(post), class: "btn btn-outline-info" %>
             <% else %>
-              <%= link_to "材料新規登録", new_post_post_material_path(post), class: "btn btn-success" %>
+              <%= link_to "材料新規登録", new_post_post_material_path(post), class: "btn btn-info" %>
             <% end %>
           </td>
         <% end %>

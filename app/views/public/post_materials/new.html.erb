@@ -1,2 +1,22 @@
-<h1>Public::PostMaterials#new</h1>
-<p>Find me in app/views/public/post_materials/new.html.erb</p>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-6 mx-auto">
+      <h2>作品材料登録</h2>
+      <div class="text-center mb-5">
+        <%= image_tag @post.get_post_image(70, 70) %>
+        <span class="ml-3"><%= @post.title %></span>
+      </div>
+      <%= form_with model:[@post, @post_material], method: :post, local: true do |f| %>
+        <% @materials.each do |material| %>
+            <div class="mb-2">
+              <%= f.check_box :material_id, {multiple: true}, material.id, nil %>
+              <%= image_tag material.get_material_image(60, 60) %>
+              <%= material.name %>
+            </div>
+          <% end %>
+
+        <%= f.submit "登録", class: "btn btn-info mt-3" %>
+      <% end %>
+    </div>
+  </div>
+</div>
