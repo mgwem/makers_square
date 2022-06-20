@@ -65,7 +65,7 @@ class Public::PostsController < ApplicationController
 
   def post_management
     @member = current_member
-    @posts = @member.posts.sorted
+    @posts = @member.posts.sorted.page(params[:page])
   end
 
   def tag_search

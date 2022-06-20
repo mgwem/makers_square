@@ -61,6 +61,19 @@ class Public::PostMaterialsController < ApplicationController
   end
 
   def destroy_all
+    @post = Post.find(params[:post_id])
+    post_materials = @post.post_materials
+    ActiveRecord::Base.transaction do
+      post_materials.each do |post_material|
+        post_material.destroy!
+      end
+      flash[:notice] = "登録を取り消しました"
+      redirect_to posts_post_management_path
+    end
+  rescue => e
+    flash[:alert] = "登録取消に失敗しました"
+    @post = Post.find(params[:post_id])
+    redirect_to post_post_materials_path(@post)
   end
 
   private

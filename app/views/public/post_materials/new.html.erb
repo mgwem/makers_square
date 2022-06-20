@@ -1,22 +1,27 @@
 <div class="container mt-5">
   <div class="row">
-    <div class="col-md-6 mx-auto">
+    <div class="col-md-8 mx-auto">
       <h2>作品材料登録</h2>
       <div class="text-center mb-5">
-        <%= image_tag @post.get_post_image(70, 70) %>
-        <span class="ml-3"><%= @post.title %></span>
+        <%= image_tag @post.get_post_image(100, 100) %>
+        <span class="ml-3 h5"><%= @post.title %></span>
       </div>
       <p>登録したい材料を選択してください</p>
       <%= form_with model:[@post, @post_material], method: :post, local: true do |f| %>
         <% @materials.each do |material| %>
-          <div class="mb-2">
-            <%= f.check_box :material_id, {multiple: true}, material.id, nil %>
-            <%= image_tag material.get_material_image(60, 60) %>
-            <%= material.name %>
+          <div class="mb-2 ml-3">
+            <label>
+              <%= f.check_box :material_id, {multiple: true}, material.id, nil %>
+              <%= image_tag material.get_material_image(60, 60) %>
+              <%= material.name %>
+            </label>
           </div>
         <% end %>
-        <%= f.submit "登録", class: "btn btn-info mt-3" %>
+        <%= f.submit "登録", class: "btn btn-info mt-3 px-5" %>
       <% end %>
+      <div class="mt-5">
+        <%= link_to "作品管理画面に戻る", posts_post_management_path %>
+      </div>
     </div>
   </div>
 </div>
