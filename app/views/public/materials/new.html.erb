@@ -1,7 +1,8 @@
 <div class="container mt-5">
   <div class="row">
     <div class="col-md-6 mx-auto">
-      <h2 class="mb-5">材料登録</h2>
+      <h2>材料登録</h2>
+      <p class="text-danger mb-5">*必須</p>
       <%= render 'layouts/errors', obj: @material %>
       <%= form_with model: @material, local: true do |f| %>
         <%= render 'form', f: f %>
