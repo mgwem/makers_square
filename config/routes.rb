@@ -57,6 +57,9 @@ Rails.application.routes.draw do
     resources :tags, only:[] do
       get 'tag_search' => "posts#tag_search"
     end
+    resources :genres, only:[] do
+      get 'genre_search' => "posts#genre_search"
+    end
     resources :materials, only:[:new, :index, :create, :edit, :update, :destroy]
   end
 
