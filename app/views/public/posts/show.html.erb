@@ -5,6 +5,10 @@
       <% if @post.is_hidden == true %>
         <p class="text-danger">この作品は管理者によって公開を制限されています</p>
       <% end %>
+      <p>
+        <span class="btn btn-success mr-3"><%= @post.genre.name %></span>
+        <span class="h3"><%= @post.title %></span>
+      </p>
       <%= render 'info', post: @post %>
 
       <!-- タグ表示 -->
@@ -16,9 +20,12 @@
         <% end %>
       </div>
 
+      <!-- 使用材料表示 -->
+      <%= render 'public/post_materials/index', materials: @materials %>
+
       <% if member_signed_in? %>
         <% if @member.id == current_member.id %>
-          <%= link_to "編集する", edit_post_path(@post), class: "btn btn-warning text-white" %>
+          <%= link_to "編集する", edit_post_path(@post), class: "btn btn-warning text-white mt-5 btn-block" %>
         <% end %>
       <% end %>
 

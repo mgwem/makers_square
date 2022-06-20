@@ -11,6 +11,7 @@
           <th>作品タイトル</th>
           <th>公開ステータス</th>
           <th></th>
+          <th></th>
         </tr>
         <% @posts.each do |post| %>
         <tr>
@@ -34,9 +35,17 @@
           <td>
             <%= link_to "編集", edit_post_path(post), class: "btn btn-warning text-white" %>
           </td>
+          <td>
+            <% if post.post_materials.exists? %>
+              <%= link_to "材料編集", post_post_materials_path(post), class: "btn btn-outline-info" %>
+            <% else %>
+              <%= link_to "材料新規登録", new_post_post_material_path(post), class: "btn btn-info" %>
+            <% end %>
+          </td>
         <% end %>
         </tr>
       </table>
+      <%= paginate @posts %>
     </div>
   </div>
 </div>

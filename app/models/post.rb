@@ -5,6 +5,8 @@ class Post < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :tag_maps, dependent: :destroy
   has_many :tags, through: :tag_maps
+  has_many :post_materials, dependent: :destroy
+  has_many :materials, through: :post_materials
 
   has_one_attached :post_image
 

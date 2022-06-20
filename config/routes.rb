@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  namespace :public do
+    get 'post_materials/new'
+    get 'post_materials/edit'
+  end
   # devise管理者側
   devise_for :admin, skip: [:registrations, :passwords],controllers: {
     sessions: "admin/sessions"
@@ -39,6 +43,9 @@ Rails.application.routes.draw do
     resources :posts, only:[:new, :create, :edit, :update, :index, :destroy] do
       resources :comments, only:[:create, :destroy]
       resource :favorites, only:[:create, :destroy]
+      resources :post_materials, only:[:new, :create, :index]
+      post 'post_materials/edit' => "post_materials#post_material_edit"
+      delete 'post_materials/destroy_all' => "post_materials#destroy_all"
     end
     resources :members, only:[:edit, :update, :show] do
       resources :posts, only:[:show]

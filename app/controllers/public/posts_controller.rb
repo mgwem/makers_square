@@ -24,6 +24,7 @@ class Public::PostsController < ApplicationController
     @posts = @member.posts.recent.limit(6)
     @comment = Comment.new
     @post_tags = @post.tags
+    @materials = @post.materials
   end
 
   def edit
@@ -64,7 +65,7 @@ class Public::PostsController < ApplicationController
 
   def post_management
     @member = current_member
-    @posts = @member.posts.sorted
+    @posts = @member.posts.sorted.page(params[:page])
   end
 
   def tag_search
