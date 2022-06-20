@@ -6,15 +6,15 @@
         <%= image_tag @post.get_post_image(70, 70) %>
         <span class="ml-3"><%= @post.title %></span>
       </div>
+      <p>登録したい材料を選択してください</p>
       <%= form_with model:[@post, @post_material], method: :post, local: true do |f| %>
         <% @materials.each do |material| %>
-            <div class="mb-2">
-              <%= f.check_box :material_id, {multiple: true}, material.id, nil %>
-              <%= image_tag material.get_material_image(60, 60) %>
-              <%= material.name %>
-            </div>
-          <% end %>
-
+          <div class="mb-2">
+            <%= f.check_box :material_id, {multiple: true}, material.id, nil %>
+            <%= image_tag material.get_material_image(60, 60) %>
+            <%= material.name %>
+          </div>
+        <% end %>
         <%= f.submit "登録", class: "btn btn-info mt-3" %>
       <% end %>
     </div>
