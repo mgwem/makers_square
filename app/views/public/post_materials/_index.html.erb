@@ -1,0 +1,14 @@
+<div class="row">
+  <% materials.each do |material| %>
+    <div class="col-3 mb-3">
+      <div class="card h-100">
+        <%= image_tag material.get_material_image(70, 70), class: "w-100" %>
+        <div class="card-body">
+          <font size="2">
+            <%= material.name %>
+          </font>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
