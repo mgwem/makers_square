@@ -1,57 +1,73 @@
  <header class="shadow-sm">
-      <nav class="navbar navbar-expand-lg navbar-light">
+   <div class="text-center">
+     <%= link_to root_path do %>
+       <%= image_tag 'logo-01.png', size: "450x120" %>
+     <% end %>
+   </div>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-success">
         <div class="container">
-          <a class="navbar-brand p-3" href="/">Makers Square</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav ml-auto">
+            <ul class="navbar-nav mx-auto">
             <% if admin_signed_in? %>
               <li class="nav-item">
-                <%= link_to 'ユーザー 一覧', admin_root_path, class: 'nav-link text-dark' %>
+                <%= link_to 'ユーザー 一覧', admin_root_path, class: 'nav-link text-white' %>
               </li>
               <li class="nav-item">
-                <%= link_to '作品一覧', admin_posts_path, class: 'nav-link text-dark' %>
+                <%= link_to '作品一覧', admin_posts_path, class: 'nav-link text-white' %>
               </li>
               <li class="nav-item">
-                <%= link_to 'ジャンル一覧', admin_genres_path, class: 'nav-link text-dark' %>
+                <%= link_to 'ジャンル一覧', admin_genres_path, class: 'nav-link text-white' %>
               </li>
               <li class="nav-item">
-                <%= link_to "コメント一覧", admin_comments_path, class: 'nav-link text-dark' %>
+                <%= link_to "コメント一覧", admin_comments_path, class: 'nav-link text-white' %>
               </li>
               <li class="nav-item">
-                <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link text-dark' %>
+                <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link text-white' %>
               </li>
+
+
             <% elsif member_signed_in? %>
               <li class="nav-item">
-                <%= link_to 'About', about_path, class: 'nav-link text-dark' %>
+                <%= link_to 'About', about_path, class: 'nav-link text-white' %>
               </li>
               <li class="nav-item">
-                <%= link_to '作品一覧', posts_path, class: 'nav-link text-dark' %>
+                <%= link_to '作品一覧', posts_path, class: 'nav-link text-white' %>
               </li>
               <li class="nav-item">
-                <%= link_to 'マイページ', members_my_page_path, class: 'nav-link text-dark' %>
+                <%= link_to 'マイページ', members_my_page_path, class: 'nav-link text-white' %>
               </li>
               <li class="nav-item">
-                <%= link_to "ログアウト", destroy_member_session_path, method: :delete, class: 'nav-link text-dark' %>
+                <%= link_to '新規投稿', new_post_path, class: 'nav-link text-white' %>
               </li>
+              <li class="nav-item">
+                <%= link_to "ログアウト", destroy_member_session_path, method: :delete, class: 'nav-link text-white' %>
+              </li>
+
             <% else %>
               <li class="nav-item">
-                <%= link_to 'About', about_path, class: 'nav-link text-dark' %>
+                <%= link_to 'About', about_path, class: 'nav-link text-white' %>
               </li>
               <li class="nav-item">
-                <%= link_to '作品一覧', posts_path, class: 'nav-link text-dark' %>
+                <%= link_to '作品一覧', posts_path, class: 'nav-link text-white' %>
               </li>
               <li class="nav-item">
-                <%= link_to '新規登録', new_member_registration_path, class: 'nav-link text-dark' %>
+                <%= link_to '新規登録', new_member_registration_path, class: 'nav-link text-white' %>
               </li>
               <li class="nav-item">
-                <%= link_to "ログイン", new_member_session_path, class: 'nav-link text-dark' %>
+                <%= link_to "ログイン", new_member_session_path, class: 'nav-link text-white' %>
               </li>
             <% end %>
             </ul>
           </div>
+          <% if member_signed_in? %>
+            <div class="text-right">
+            <%= image_tag current_member.get_profile_image(50, 50), class: "rounded-circle" %>
+            <span class="ml-2 text-white"><%= current_member.name %>さん</span>
+            </div>
+          <% end %>
         </div>
       </nav>
     </header>
