@@ -13,51 +13,51 @@
             <ul class="navbar-nav mx-auto">
             <% if admin_signed_in? %>
               <li class="nav-item">
-                <%= link_to 'ユーザー 一覧', admin_root_path, class: 'nav-link text-white' %>
+                <%= link_to 'ユーザー 一覧', admin_root_path, class: 'nav-link' %>
               </li>
               <li class="nav-item">
-                <%= link_to '作品一覧', admin_posts_path, class: 'nav-link text-white' %>
+                <%= link_to '作品一覧', admin_posts_path, class: 'nav-link' %>
               </li>
               <li class="nav-item">
-                <%= link_to 'ジャンル一覧', admin_genres_path, class: 'nav-link text-white' %>
+                <%= link_to 'ジャンル一覧', admin_genres_path, class: 'nav-link' %>
               </li>
               <li class="nav-item">
-                <%= link_to "コメント一覧", admin_comments_path, class: 'nav-link text-white' %>
+                <%= link_to "コメント一覧", admin_comments_path, class: 'nav-link' %>
               </li>
               <li class="nav-item">
-                <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link text-white' %>
+                <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link' %>
               </li>
 
 
             <% elsif member_signed_in? %>
               <li class="nav-item">
-                <%= link_to 'About', about_path, class: 'nav-link text-white' %>
+                <%= link_to 'About', about_path, class: 'nav-link' %>
               </li>
               <li class="nav-item">
-                <%= link_to '作品一覧', posts_path, class: 'nav-link text-white' %>
+                <%= link_to '作品一覧', posts_path, class: 'nav-link' %>
               </li>
               <li class="nav-item">
-                <%= link_to 'マイページ', members_my_page_path, class: 'nav-link text-white' %>
+                <%= link_to 'マイページ', members_my_page_path, class: 'nav-link' %>
               </li>
               <li class="nav-item">
-                <%= link_to '新規投稿', new_post_path, class: 'nav-link text-white' %>
+                <%= link_to '新規投稿', new_post_path, class: 'nav-link' %>
               </li>
               <li class="nav-item">
-                <%= link_to "ログアウト", destroy_member_session_path, method: :delete, class: 'nav-link text-white' %>
+                <%= link_to "ログアウト", destroy_member_session_path, method: :delete, class: 'nav-link' %>
               </li>
 
             <% else %>
               <li class="nav-item">
-                <%= link_to 'About', about_path, class: 'nav-link text-white' %>
+                <%= link_to 'About', about_path, class: 'nav-link' %>
               </li>
               <li class="nav-item">
-                <%= link_to '作品一覧', posts_path, class: 'nav-link text-white' %>
+                <%= link_to '作品一覧', posts_path, class: 'nav-link' %>
               </li>
               <li class="nav-item">
-                <%= link_to '新規登録', new_member_registration_path, class: 'nav-link text-white' %>
+                <%= link_to '新規登録', new_member_registration_path, class: 'nav-link' %>
               </li>
               <li class="nav-item">
-                <%= link_to "ログイン", new_member_session_path, class: 'nav-link text-white' %>
+                <%= link_to "ログイン", new_member_session_path, class: 'nav-link' %>
               </li>
             <% end %>
             </ul>

@@ -16,8 +16,8 @@
             <%= link_to "編集", edit_member_path(@member), class: "btn btn-warning text-light mx-3" %>
           <% end %>
         </p>
-        <div class="my-3">
-          <%= image_tag @member.get_profile_image(60, 60) %>
+        <div class="my-3 text-center">
+          <%= image_tag @member.get_profile_image(60, 60), class: "rounded-circle" %>
         </div>
         <table class="table">
           <tr>
