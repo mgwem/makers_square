@@ -1,7 +1,7 @@
 class Public::MaterialsController < ApplicationController
 
   def index
-    @materials = current_member.materials.page(params[:page])
+    @materials = current_member.materials.page(params[:page]).order(created_at: :DESC)
   end
 
   def new
