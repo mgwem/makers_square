@@ -2,6 +2,7 @@
   <div class="row">
     <div class="col-md-8 mx-auto">
       <h2>作品編集</h2>
+      <p class="text-danger">*必須</p>
       <%= render 'layouts/errors', obj: @post %>
       <%= form_with model: [:admin, @post], local: true do |f| %>
 
@@ -9,7 +10,10 @@
 
         <div class="form-group row">
           <div class="col-md-3">
-            <%= f.label :is_hidden, "作品ステータス", class: "col-form-label" %>
+            <div class="d-flex">
+              <%= f.label :is_hidden, "作品ステータス", class: "col-form-label" %>
+              <span class="text-danger">*</span>
+            </div>
           </div>
           <div class="col-md-5 my-2">
             <%= f.radio_button :is_hidden, false %>

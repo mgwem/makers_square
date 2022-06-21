@@ -51,7 +51,7 @@ class Public::PostsController < ApplicationController
     @post = Post.find(params[:id])
     if @post.destroy
       flash[:notice] = "作品を削除しました"
-      redirect_to member_path(@post.member)
+      redirect_to posts_post_management_path
     else
       @genres = Genre.all
       @tag_list = @post.tags.pluck(:tag_name).join(",")
@@ -71,6 +71,11 @@ class Public::PostsController < ApplicationController
   def tag_search
     @tag = Tag.find(params[:tag_id])
     @posts = @tag.posts.recent.page(params[:page])
+  end
+
+  def genre_search
+    @genre = Genre.find(params[:genre_id])
+    @posts = @genre.posts.recent.page(params[:page])
   end
 
   private
