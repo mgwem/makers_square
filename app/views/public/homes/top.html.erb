@@ -9,10 +9,17 @@
       <div class="row mb-3">
         <% @posts.each do |post| %>
           <div class="col-lg-4 col-sm-6 mt-3">
-            <div class="card h-100">
-              <%= link_to member_post_path(post.member , post) do %>
-                <%= image_tag post.get_post_image(300, 300), class: "w-100" %>
-              <% end %>
+            <div id ="post_<%= post.id %>" class="card h-100">
+              <div class="card-image">
+                <%= link_to member_post_path(post.member , post) do %>
+                  <%= image_tag post.get_post_image(300, 300), class: "w-100" %>
+                <% end %>
+                <% if member_signed_in? %>
+                  <div class="h5 index-favorite-btn">
+                    <%= render 'public/favorites/btn', post: post %>
+                  </div>
+                <% end %>
+              </div>
               <div class="card-body">
                 <%= link_to member_post_path(post.member , post) do %>
                   <%= post.title %>

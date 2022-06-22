@@ -36,3 +36,13 @@ footer {
 .footer-copyright {
   height: 70px;
 }
+
+.card-image {
+  position: relative;
+}
+
+.index-favorite-btn {
+  position: absolute;
+  bottom: 3px;
+  right: 10px;
+}
