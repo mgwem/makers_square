@@ -34,6 +34,7 @@ Rails.application.routes.draw do
   scope module: :public do
     root :to => "homes#top"
     get "about" => "homes#about"
+    get "members" => "homes#signup_error"
     get 'members/my_page' => "members#my_page"
     get 'members/unsubscribe' => "members#unsubscribe"
     patch 'members/withdraw' => "members#withdraw"

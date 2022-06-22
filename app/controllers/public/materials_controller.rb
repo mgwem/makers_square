@@ -1,4 +1,5 @@
 class Public::MaterialsController < ApplicationController
+  before_action :authenticate_member!
 
   def index
     @materials = current_member.materials.page(params[:page]).order(created_at: :DESC)

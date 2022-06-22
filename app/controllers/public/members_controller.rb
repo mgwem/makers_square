@@ -1,4 +1,5 @@
 class Public::MembersController < ApplicationController
+  before_action :authenticate_member!, except: [:show, :posts]
   before_action :ensure_guest_member, only: [:edit]
 
   def my_page
@@ -43,11 +44,13 @@ class Public::MembersController < ApplicationController
     redirect_to root_path
   end
 
+  # プロフィールページ
   def show
     @member = Member.find(params[:id])
     @posts = @member.posts.recent.limit(6)
   end
 
+  # 会員の作品一覧
   def posts
     @member = Member.find(params[:id])
     @posts = @member.posts.recent.page(params[:page])

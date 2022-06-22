@@ -1,4 +1,5 @@
 class Public::PostMaterialsController < ApplicationController
+  before_action :authenticate_member!
 
   def new
     @post = Post.find(params[:post_id])
@@ -25,6 +26,7 @@ class Public::PostMaterialsController < ApplicationController
     redirect_to new_post_post_material_path(@post)
   end
 
+  # 作品に登録している材料表示（編集画面）
   def index
     @post = Post.find(params[:post_id])
     @post_material = PostMaterial.new

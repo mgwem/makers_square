@@ -1,4 +1,6 @@
 class Public::PostsController < ApplicationController
+  before_action :authenticate_member!, except: [:show, :index, :tag_search, :genre_search]
+
   def new
     @post = Post.new(session[:post] || {})
     @genres = Genre.all
