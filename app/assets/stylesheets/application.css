@@ -13,3 +13,26 @@
  *= require_tree .
  *= require_self
  */
+
+.wrapper {
+  min-height: 100vh;
+  position: relative;
+  padding-bottom: 160px;
+  box-sizing: border-box;
+}
+
+footer {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+}
+
+.footer-toplink {
+  height: 40px;
+  margin-top: 50px;
+  background-color: #9acd32;
+}
+
+.footer-copyright {
+  height: 70px;
+}

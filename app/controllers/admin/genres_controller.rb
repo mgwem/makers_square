@@ -1,4 +1,6 @@
 class Admin::GenresController < ApplicationController
+  before_action :authenticate_admin!
+
   def index
     @genres = Genre.all
     @genre = Genre.new
@@ -10,8 +12,8 @@ class Admin::GenresController < ApplicationController
       flash[:notice] = "ジャンルを追加しました"
       redirect_to admin_genres_path
     else
-      @genres = Genre.all
-      render :index
+      flash[:danger] = @genre.errors.full_messages
+      redirect_to admin_genres_path
     end
   end
 
@@ -25,7 +27,8 @@ class Admin::GenresController < ApplicationController
       flash[:notice] = "ジャンル名を更新しました"
       redirect_to admin_genres_path
     else
-      render :edit
+      flash[:danger] = @genre.errors.full_messages
+      redirect_to edit_admin_genre_path
     end
   end
 

@@ -1,4 +1,4 @@
-<h5>コメント (<%= post.comments.count %>件)</h5>
+<h4 class="mb-3">コメント (<%= post.comments.count %>件)</h4>
 <% post.comments.each do |comment| %>
   <% unless comment.is_hidden == true %>
     <div class="row my-2">

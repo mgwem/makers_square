@@ -1,4 +1,6 @@
 class Admin::MembersController < ApplicationController
+  before_action :authenticate_admin!
+
   def show
     @member = Member.find(params[:id])
   end
@@ -57,7 +59,8 @@ class Admin::MembersController < ApplicationController
       flash[:notice] = "ユーザ情報を更新しました"
       redirect_to admin_member_path(@member)
     else
-      render :edit
+      flash[:danger] = @member.errors.full_messages
+      redirect_to edit_admin_member_path
     end
   end
 

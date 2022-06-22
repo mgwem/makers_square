@@ -1,4 +1,6 @@
 class Admin::PostsController < ApplicationController
+  before_action :authenticate_admin!
+  
   def index
     @posts = Post.page(params[:page]).order(id: :DESC)
   end
@@ -23,9 +25,8 @@ class Admin::PostsController < ApplicationController
       flash[:notice] = "作品を更新しました"
       redirect_to admin_post_path(@post)
     else
-      @genres = Genre.all
-      @tag_list = @post.tags.pluck(:tag_name).join(",")
-      render :edit
+      flash[:danger] = @post.errors.full_messages
+      redirect_to edit_admin_post_path
     end
   end
 
