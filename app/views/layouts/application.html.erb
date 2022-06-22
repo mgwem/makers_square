@@ -13,17 +13,24 @@
   </head>
 
   <body>
-    <%= render 'layouts/header' %>
-    <main>
-      <% if flash[:notice] %>
-        <p id="notice" class="alert alert-success"><%= notice %></p>
-      <% end %>
-      <% if flash[:alert] %>
-        <p id="alert" class="alert alert-danger"><%= alert %></p>
-      <% end %>
-      <%= render 'public/searches/form' %>
-      <%= yield %>
-    </main>
-    <%= render 'layouts/footer' %>
+    <div class="wrapper">
+      <%= render 'layouts/header' %>
+      
+      <main>
+        <% if flash[:notice] %>
+          <p id="notice" class="alert alert-success"><%= notice %></p>
+        <% end %>
+        <% if flash[:alert] %>
+          <p id="alert" class="alert alert-danger"><%= alert %></p>
+        <% end %>
+      
+        <%= render 'public/searches/form' %>
+        
+        <%= yield %>
+      
+      </main>
+      
+      <%= render 'layouts/footer' %>
+    </div>
   </body>
 </html>
