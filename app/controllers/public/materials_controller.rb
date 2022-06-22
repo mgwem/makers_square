@@ -15,7 +15,8 @@ class Public::MaterialsController < ApplicationController
       flash[:notice] = "材料が登録されました"
       redirect_to materials_path
     else
-      render :new
+      flash[:danger] = @material.errors.full_messages
+      redirect_to new_material_path
     end
   end
 
@@ -29,7 +30,8 @@ class Public::MaterialsController < ApplicationController
       flash[:notice] = "材料の情報を更新しました"
       redirect_to materials_path
     else
-      render :edit
+      flash[:danger] = @material.errors.full_messages
+      redirect_to edit_material_path
     end
   end
 

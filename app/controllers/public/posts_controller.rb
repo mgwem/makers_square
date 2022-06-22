@@ -1,6 +1,6 @@
 class Public::PostsController < ApplicationController
   def new
-    @post = Post.new
+    @post = Post.new(session[:post] || {})
     @genres = Genre.all
   end
 
@@ -10,11 +10,13 @@ class Public::PostsController < ApplicationController
     tag_list = params[:post][:tag_name].split(',')
     if @post.save
       @post.save_tag(tag_list)
+      session[:post] = nil
       flash[:notice] = "作品が投稿されました"
       redirect_to member_post_path(@post.member, @post)
     else
-      @genres = Genre.all
-      render :new
+      session[:post] = @post.attributes.slice(*post_params.keys)
+      flash[:danger] = @post.errors.full_messages
+      redirect_to new_post_path
     end
   end
 
@@ -41,9 +43,8 @@ class Public::PostsController < ApplicationController
       flash[:notice] = "作品を更新しました"
       redirect_to member_post_path(@post.member, @post)
     else
-      @genres = Genre.all
-      @tag_list = @post.tags.pluck(:tag_name).join(",")
-      render :edit
+      flash[:danger] = @post.errors.full_messages
+      redirect_to edit_post_path(@post)
     end
   end
 
