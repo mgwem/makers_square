@@ -30,11 +30,15 @@
         </div>
 
         <div class="form-group">
-          <%= f.submit "Sign up", class: "btn btn-success" %>
+          <%= f.submit "新規登録", class: "btn btn-success" %>
         </div>
       <% end %>
 
-      <p>ログイン・ゲストログインは<%= render "public/shared/links" %>から</p>
+      <h5 class="mt-5">ログイン・ゲストログインは<%= render "public/shared/links" %>から</h5>
     </div>
   </div>
 </div>
+
+<% if resource.errors.any? %>
+  <%= javascript_pack_tag 'sign_up_render' %>
+<% end %>
