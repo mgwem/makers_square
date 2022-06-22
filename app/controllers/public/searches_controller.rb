@@ -5,20 +5,25 @@ class Public::SearchesController < ApplicationController
     @range = params[:range]
     @content = params[:content]
     @method = params[:method]
-    # 会員検索
-    if @range == 'member'
-      @records = Member.search_for(@content, @method).recent_member.page(params[:page])
-    # 作品タイトル検索
-    elsif @range == 'post_title'
-      @range_ja = "作品タイトル"
-      @records = Post.search_title_for(@content, @method).recent.page(params[:page])
-    # 作品説明検索
-    elsif @range == 'post_explanation'
-      @range_ja = "作品説明"
-      @records = Post.search_explanation_for(@content, @method).recent.page(params[:page])
-    # タグ検索
-    elsif @range == 'tag'
-      @records = Tag.search_for(@content, @method).recent.page(params[:page])
+    if @content != ""
+      # 会員検索
+      if @range == 'member'
+        @records = Member.search_for(@content, @method).recent_member.page(params[:page])
+      # 作品タイトル検索
+      elsif @range == 'post_title'
+        @range_ja = "作品タイトル"
+        @records = Post.search_title_for(@content, @method).recent.page(params[:page])
+      # 作品説明検索
+      elsif @range == 'post_explanation'
+        @range_ja = "作品説明"
+        @records = Post.search_explanation_for(@content, @method).recent.page(params[:page])
+      # タグ検索
+      elsif @range == 'tag'
+        @records = Tag.search_for(@content, @method).recent.page(params[:page])
+      end
+    else
+      flash[:alert] = "検索ワードを入力してください"
+      redirect_to request.referer
     end
 
     # @method日本語表記
