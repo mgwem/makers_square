@@ -46,12 +46,22 @@
           </tr>
         </table>
 
-        <div>
-          <ul>
-            <li><%= link_to "いいね一覧", member_favorites_path(@member) %></li>
-            <li><%= link_to "フォロー一覧", member_followings_path(@member) %></li>
-            <li><%= link_to "フォロワー一覧", member_followers_path(@member) %></li>
-          </ul>
+        <div class="ml-5 mt-5">
+          <p>
+            <%= link_to member_favorites_path(@member) do %>
+              <i class="fas fa-square"></i> いいね一覧
+            <% end %>
+          </p>
+          <p>
+            <%= link_to member_followings_path(@member) do %>
+              <i class="fas fa-square"></i> フォロー一覧
+            <% end %>
+          </p>
+          <p>
+            <%= link_to member_followers_path(@member) do %>
+              <i class="fas fa-square"></i> フォロワー一覧
+            <% end %>
+          </p>
         </div>
 
       </div>
