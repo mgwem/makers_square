@@ -45,4 +45,31 @@ footer {
   position: absolute;
   bottom: 3px;
   right: 10px;
+  border-radius: 50%;
+  background-color: white;
+  width: 30px;
+  height: 30px;
+  box-shadow: 2px 2px 4px gray;
+}
+
+.card {
+  box-shadow: 2px 2px 5px #d3d3d3;
+}
+
+.index-image {
+  height: 200px;
+  background-size: cover;
+}
+
+a {
+  color: #696969;
+}
+
+a:hover{
+  color : #008000;
+  text-decoration: none;
+}
+
+.back-top {
+  color: white;
 }

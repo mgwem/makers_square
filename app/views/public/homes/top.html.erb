@@ -12,10 +12,10 @@
             <div id ="post_<%= post.id %>" class="card h-100">
               <div class="card-image">
                 <%= link_to member_post_path(post.member , post) do %>
-                  <%= image_tag post.get_post_image(300, 300), class: "w-100" %>
+                  <%= image_tag post.get_post_image(200, 200), class: "w-100 index-image" %>
                 <% end %>
                 <% if member_signed_in? %>
-                  <div class="h5 index-favorite-btn">
+                  <div class="h5 index-favorite-btn d-flex align-items-center justify-content-center">
                     <%= render 'public/favorites/btn', post: post %>
                   </div>
                 <% end %>
