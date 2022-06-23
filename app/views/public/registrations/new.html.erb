@@ -1,7 +1,7 @@
 <div class="container mt-5">
   <div class="row">
     <div class="col-md-5 col-sm-8 mx-auto">
-      <h2>新規会員登録</h2>
+      <h2 class="mb-4">新規会員登録</h2>
 
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <%= render "public/shared/error_messages", resource: resource %>
@@ -29,12 +29,12 @@
           <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
         </div>
 
-        <div class="form-group">
-          <%= f.submit "新規登録", class: "btn btn-success" %>
+        <div class="form-group text-center">
+          <%= f.submit "新規登録", class: "btn btn-success mb-5 mt-3" %>
         </div>
       <% end %>
 
-      <h5 class="mt-5">ログイン・ゲストログインは<%= render "public/shared/links" %>から</h5>
+      <h5 class="my-5 text-center">ログイン・ゲストログインは <%= render "public/shared/links" %> から</h5>
     </div>
   </div>
 </div>

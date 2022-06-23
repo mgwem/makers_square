@@ -1,7 +1,7 @@
 <div class="container mt-5">
   <div class="row">
     <div class="col-md-5 col-sm-8 mx-auto">
-      <h2>ログイン</h2>
+      <h2 class="mb-4">ログイン</h2>
 
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <div class="form-group">
@@ -21,15 +21,17 @@
           </div>
         <% end %>
 
-        <div class="form-group">
-          <%= f.submit "ログイン", class: "btn btn-success" %>
+        <div class="form-group text-center">
+          <%= f.submit "ログイン", class: "btn btn-success px-5 mb-5" %>
         </div>
       <% end %>
 
-      <h2>ゲストログイン</h2>
-      <%= link_to "ゲストログイン", members_gest_sign_in_path, method: :post, class: "btn btn-warning my-2 text-light" %>
+      <h2 class="mt-5 mb-3">ゲストログイン</h2>
+      <div class="text-center">
+        <%= link_to "ゲストログイン", members_gest_sign_in_path, method: :post, class: "btn btn-warning mb-5 mt-3 text-white" %>
+      </div>
 
-      <h5 class="mt-5">新規会員登録は<%= render "public/shared/links" %>から</h5>
+      <h5 class="mt-5 text-center">新規会員登録は<%= render "public/shared/links" %>から</h5>
     </div>
   </div>
 </div>
