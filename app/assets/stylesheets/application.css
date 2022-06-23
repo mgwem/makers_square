@@ -14,6 +14,15 @@
  *= require_self
  */
 
+ a {
+  color: #696969;
+}
+
+a:hover{
+  color : #008000;
+  text-decoration: none;
+}
+
 .wrapper {
   min-height: 100vh;
   position: relative;
@@ -27,12 +36,19 @@ footer {
   bottom: 0;
 }
 
+/* フッターのdiv[トップへ戻る] */
 .footer-toplink {
   height: 40px;
   margin-top: 50px;
   background-color: #9acd32;
 }
 
+/* トップへ戻るリンクの文字色*/
+.back-top {
+  color: white;
+}
+
+/* フッターのdiv[コピーライト] */
 .footer-copyright {
   height: 70px;
 }
@@ -41,6 +57,7 @@ footer {
   position: relative;
 }
 
+/* カードで表示している時のいいねボタン */
 .index-favorite-btn {
   position: absolute;
   bottom: 3px;
@@ -56,20 +73,14 @@ footer {
   box-shadow: 2px 2px 5px #d3d3d3;
 }
 
+/* cardで表示している画像 */
 .index-image {
   height: 200px;
   background-size: cover;
 }
 
-a {
-  color: #696969;
-}
-
-a:hover{
-  color : #008000;
-  text-decoration: none;
-}
-
-.back-top {
-  color: white;
+.meterial-image {
+  height: 60px;
+  width: 70px;
+  background-size: cover;
 }

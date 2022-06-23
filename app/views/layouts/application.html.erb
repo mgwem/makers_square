@@ -24,8 +24,9 @@
         <% if flash[:alert] %>
           <p id="alert" class="alert alert-danger"><%= alert %></p>
         <% end %>
-
-        <%= render 'public/searches/form' %>
+        <% unless admin_signed_in? %>
+          <%= render 'public/searches/form' %>
+        <% end %>
 
         <%= yield %>
 

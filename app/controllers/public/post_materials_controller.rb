@@ -22,6 +22,9 @@ class Public::PostMaterialsController < ApplicationController
     end
   rescue => e
     flash[:alert] = "登録に失敗しました"
+    if e.message.include?('empty: post_material')
+      flash[:alert] += '[材料を選択してください]'
+    end
     @post = Post.find(params[:post_id])
     redirect_to new_post_post_material_path(@post)
   end
@@ -58,6 +61,9 @@ class Public::PostMaterialsController < ApplicationController
     end
   rescue => e
     flash[:alert] = "登録に失敗しました"
+    if e.message.include?('empty: post_material')
+      flash[:alert] += '[材料を選択してください]'
+    end
     @post = Post.find(params[:post_id])
     redirect_to post_post_materials_path(@post)
   end
@@ -72,7 +78,7 @@ class Public::PostMaterialsController < ApplicationController
       flash[:notice] = "登録を取り消しました"
       redirect_to posts_post_management_path
     end
-  rescue => e
+  rescue
     flash[:alert] = "登録取消に失敗しました"
     @post = Post.find(params[:post_id])
     redirect_to post_post_materials_path(@post)
