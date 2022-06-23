@@ -74,12 +74,12 @@ footer {
 }
 
 /* cardで表示している画像 */
-.index-image {
+.card-image {
   height: 200px;
   background-size: cover;
 }
 
-.meterial-image {
+.index-image {
   height: 60px;
   width: 70px;
   background-size: cover;
