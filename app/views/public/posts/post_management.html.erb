@@ -2,50 +2,58 @@
   <div class="row">
     <div class="col-md-8 mx-auto">
       <h2>作品管理</h2>
-      <div class="mb-4 text-right">
-      <%= link_to "新規投稿", new_post_path, class: "btn btn-success" %>
+      <div class="text-center">
+        <%= link_to "新規投稿", new_post_path, class: "btn btn-success px-5 mb-5 mt-3" %>
       </div>
-      <table class="table">
-        <tr>
-          <th></th>
-          <th>作品タイトル</th>
-          <th>公開ステータス</th>
-          <th></th>
-          <th></th>
-        </tr>
-        <% @posts.each do |post| %>
-        <tr>
-          <td>
-            <%= link_to member_post_path(post.member, post) do %>
-              <%= image_tag post.get_post_image(50, 50) %>
-            <% end %>
-          </td>
-          <td>
-            <%= link_to member_post_path(post.member, post) do %>
-              <%= post.title %>
-            <% end %>
-          </td>
-          <td>
-            <% if post.is_published == true %>
-              <span class="text-success">公開</span>
-            <% elsif post.is_published  == false %>
-              <span class="text-danger">非公開</span>
-            <% end %>
-          </td>
-          <td>
-            <%= link_to "編集", edit_post_path(post), class: "btn btn-warning text-white" %>
-          </td>
-          <td>
-            <% if post.post_materials.exists? %>
-              <%= link_to "材料編集", post_post_materials_path(post), class: "btn btn-outline-info" %>
-            <% else %>
-              <%= link_to "材料新規登録", new_post_post_material_path(post), class: "btn btn-info" %>
-            <% end %>
-          </td>
-        <% end %>
-        </tr>
-      </table>
-      <%= paginate @posts %>
+
+      <% if @posts.exists? %>
+        <table class="table">
+          <tr>
+            <th></th>
+            <th>作品タイトル</th>
+            <th>公開ステータス</th>
+            <th></th>
+            <th></th>
+          </tr>
+          <% @posts.each do |post| %>
+          <tr>
+            <td>
+              <%= link_to member_post_path(post.member, post) do %>
+                <%= image_tag post.get_post_image(50, 50) %>
+              <% end %>
+            </td>
+            <td>
+              <%= link_to member_post_path(post.member, post) do %>
+                <%= post.title %>
+              <% end %>
+            </td>
+            <td>
+              <% if post.is_published == true %>
+                <span class="text-success">公開</span>
+              <% elsif post.is_published  == false %>
+                <span class="text-danger">非公開</span>
+              <% end %>
+            </td>
+            <td>
+              <%= link_to "編集", edit_post_path(post), class: "btn btn-warning text-white" %>
+            </td>
+            <td>
+              <% if post.post_materials.exists? %>
+                <%= link_to "材料編集", post_post_materials_path(post), class: "btn btn-outline-info" %>
+              <% else %>
+                <%= link_to "材料新規登録", new_post_post_material_path(post), class: "btn btn-info" %>
+              <% end %>
+            </td>
+          <% end %>
+          </tr>
+        </table>
+        <%= paginate @posts %>
+      <% else %>
+        <div class="text-center mt-5">
+          <h5>投稿した作品はありません</h5>
+        </div>
+      <% end %>
+
     </div>
   </div>
 </div>

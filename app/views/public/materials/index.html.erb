@@ -18,7 +18,7 @@
           </tr>
           <% @materials.each do |material| %>
             <tr>
-              <td><%= image_tag material.get_material_image(60, 60) %></td>
+              <td><%= image_tag material.get_material_image(70, 60), class: "meterial-image" %>
               <td><%= material.name %></td>
               <td><%= material.store %></td>
               <td><%= material.price %></td>
