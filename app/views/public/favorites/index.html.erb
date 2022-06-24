@@ -34,9 +34,11 @@
                 <div id ="post_<%= favorite.post.id %>" class="card h-100">
                   <div class="card-image">
                     <%= image_tag 'no-image.png', class: "w-100 card-image" %>
-                    <div class="h5 index-favorite-btn d-flex align-items-center justify-content-center">
-                      <%= render 'public/favorites/btn', post: favorite.post %>
-                    </div>
+                    <% if @member == current_member %>
+                      <div class="h5 index-favorite-btn d-flex align-items-center justify-content-center">
+                        <%= render 'public/favorites/btn', post: favorite.post %>
+                      </div>
+                    <% end %>
                   </div>
                   <div class="card-body index-card">
                     <p>非公開作品です</p>

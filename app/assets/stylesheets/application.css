@@ -119,3 +119,17 @@ footer {
   width: 40px;
   background-size: cover;
 }
+
+/* プロフィールページ作品画像 */
+.member-show-image {
+  height: 150px;
+  width: 150px;
+  background-size: cover;
+}
+
+/* 作品詳細のユーザー作品画像 */
+.post-memberpost-image {
+  height: 95px;
+  width: 95px;
+  background-size: cover;
+}

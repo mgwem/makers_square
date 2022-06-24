@@ -48,7 +48,8 @@ class Public::MembersController < ApplicationController
   # プロフィールページ
   def show
     @member = Member.find(params[:id])
-    @posts = @member.posts.recent.limit(6)
+    @posts = @member.posts.recent.limit(4)
+    @favorites = @member.favorites.order(id: :DESC).limit(4)
   end
 
   # 会員の作品一覧

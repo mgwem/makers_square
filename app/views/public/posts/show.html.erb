@@ -63,7 +63,7 @@
       <div class="mb-3">
         <% @posts.each do |post| %>
           <%= link_to member_post_path(post.member, post) do %>
-            <%= image_tag post.get_post_image(95, 95) , class: "m-1" %>
+            <%= image_tag post.get_post_image(95, 95) , class: "m-1 post-memberpost-image" %>
           <% end %>
         <% end %>
       </div>
