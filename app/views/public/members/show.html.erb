@@ -21,6 +21,22 @@
           <%= @member.website_info %>
         </td>
       </tr>
+      <tr>
+        <td>フォロー</td>
+        <td>
+          <%= link_to member_followings_path(@member) do %>
+            <%= @member.followings.count %>
+          <% end %>
+        </td>
+      </tr>
+      <tr>
+        <td>フォロワー</td>
+        <td>
+          <%= link_to member_followers_path(@member) do %>
+            <%= @member.followers.count %>
+          <% end %>
+        </td>
+      </tr>
     </table>
     </div>
   </div>

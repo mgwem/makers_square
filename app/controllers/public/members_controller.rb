@@ -1,6 +1,7 @@
 class Public::MembersController < ApplicationController
   before_action :authenticate_member!, except: [:show, :posts]
   before_action :ensure_guest_member, only: [:edit]
+  before_action :ensure_correct_member, only: [:edit, :update,]
 
   def my_page
     @member = current_member
@@ -66,6 +67,13 @@ class Public::MembersController < ApplicationController
     @member = Member.find(params[:id])
     if @member.name == "guest"
       redirect_to members_my_page_path, notice: "ゲストユーザーはユーザー情報編集画面へ遷移できません"
+    end
+  end
+
+  def ensure_correct_member
+    @member = Member.find(params[:id])
+    unless @member == current_member
+      redirect_to root_path
     end
   end
 

@@ -3,7 +3,7 @@
 class Public::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
   before_action :reject_member, only: [:create]
-  
+
   def guest_sign_in
     member = Member.guest
     sign_in member
@@ -32,7 +32,7 @@ class Public::SessionsController < Devise::SessionsController
     return if !@member
     if @member.valid_password?(params[:member][:password]) && (@member.is_void == true)
       flash[:alert] = "管理者によって利用を制限されています"
-      redirect_to new_member_registration_path
+      redirect_to new_member_session_path
     elsif @member.valid_password?(params[:member][:password]) && (@member.is_deleted == true)
       flash[:alert] = "退会済みです。新規登録をしてご利用ください。"
       redirect_to new_member_registration_path

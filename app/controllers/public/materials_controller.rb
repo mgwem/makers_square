@@ -1,5 +1,6 @@
 class Public::MaterialsController < ApplicationController
   before_action :authenticate_member!
+  before_action :ensure_correct_member, only:[:edit, :update, :destroy]
 
   def index
     @materials = current_member.materials.page(params[:page]).order(created_at: :DESC)
@@ -51,6 +52,14 @@ class Public::MaterialsController < ApplicationController
 
   def material_params
     params.require(:material).permit(:name, :store, :price, :is_stocked, :material_image)
+  end
+
+  def ensure_correct_member
+    material = Material.find(params[:id])
+    @member = material.member_id
+    unless @member == current_member.id
+      redirect_to root_path
+    end
   end
 
 end

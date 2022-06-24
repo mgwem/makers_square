@@ -1,5 +1,6 @@
 class Public::PostMaterialsController < ApplicationController
   before_action :authenticate_member!
+  before_action :ensure_correct_member
 
   def new
     @post = Post.find(params[:post_id])
@@ -88,6 +89,14 @@ class Public::PostMaterialsController < ApplicationController
 
   def post_material_params
     params.require(:post_material).permit(:post_id, material_id:[])
+  end
+
+  def ensure_correct_member
+    post = Post.find(params[:post_id])
+    @member = post.member_id
+    unless @member == current_member.id
+      redirect_to root_path
+    end
   end
 
 end

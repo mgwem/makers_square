@@ -1,5 +1,6 @@
 class Public::FavoritesController < ApplicationController
   before_action :authenticate_member!
+  before_action :ensure_correct_member, only:[:index]
 
   def index
     @member = Member.find(params[:member_id])
@@ -16,6 +17,15 @@ class Public::FavoritesController < ApplicationController
     @post = Post.find(params[:post_id])
     @favorite = current_member.favorites.find_by(post_id: @post.id)
     @favorite.destroy
+  end
+
+  private
+
+  def ensure_correct_member
+    @member = Member.find(params[:member_id])
+    unless @member == current_member
+      redirect_to root_path
+    end
   end
 
 end

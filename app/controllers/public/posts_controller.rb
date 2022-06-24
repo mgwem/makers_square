@@ -1,5 +1,6 @@
 class Public::PostsController < ApplicationController
   before_action :authenticate_member!, except: [:show, :index, :tag_search, :genre_search]
+  before_action :ensure_correct_member, only:[:edit, :update, :destroy]
 
   def new
     @post = Post.new(session[:post] || {})
@@ -85,6 +86,14 @@ class Public::PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:member_id, :genre_id, :title, :explanation, :is_published, :post_image)
+  end
+
+  def ensure_correct_member
+    post = Post.find(params[:id])
+    @member = post.member_id
+    unless @member == current_member.id
+      redirect_to root_path
+    end
   end
 
 end
