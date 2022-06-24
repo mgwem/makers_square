@@ -13,7 +13,7 @@ class Public::MembersController < ApplicationController
   def update
     @member = Member.find(params[:id])
     if @member.update(member_params)
-      flash[:notice] = "ユーザ情報を更新しました"
+      flash[:notice] = "ユーザー情報を更新しました"
       redirect_to members_my_page_path
     else
       flash[:danger] = @member.errors.full_messages
