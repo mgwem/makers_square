@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-9 mx-auto">
       <h2>
-        <%= image_tag @member.get_profile_image(50, 50) %>
+        <%= image_tag @member.get_profile_image(50, 50), class:"profile-image" %>
         <span class="ml-2"><%= @member.name %>さんの詳細</span>
         <%= link_to "編集", edit_admin_member_path(@member), class: "btn btn-warning text-light ml-5" %>
       </h2>

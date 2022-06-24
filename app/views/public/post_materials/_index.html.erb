@@ -1,15 +1,17 @@
-<h5 class="mt-5 mb-3"><使用材料></h5>
-<div class="row">
-  <% materials.each do |material| %>
-    <div class="col-lg-4 col-md-6 mb-3">
-      <div class="card h-100">
-        <%= image_tag material.get_material_image(250, 250), class: "w-100 card-material-image" %>
-        <div class="card-body h-100">
-          <font size="2">
-            <%= material.name %>
-          </font>
+<% if materials.exists? %>
+  <h5 class="mt-5 mb-3"><使用材料></h5>
+  <div class="row">
+    <% materials.each do |material| %>
+      <div class="col-lg-4 col-md-6 mb-3">
+        <div class="card h-100">
+          <%= image_tag material.get_material_image(250, 250), class: "w-100 card-material-image" %>
+          <div class="card-body h-100">
+            <font size="2">
+              <%= material.name %>
+            </font>
+          </div>
         </div>
       </div>
-    </div>
-  <% end %>
-</div>
+    <% end %>
+  </div>
+<% end %>
