@@ -84,3 +84,8 @@ footer {
   width: 70px;
   background-size: cover;
 }
+
+.index-link {
+  color: #808000;
+  border-bottom: 1px solid #808000;
+}

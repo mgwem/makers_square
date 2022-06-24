@@ -7,6 +7,33 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Admin.create!(
-  email: 'admin@test.jp',
+  email: 'admin@example.com',
   password: 'ccabcd',
 )
+
+15.times do |n|
+  Member.create!(
+    email: "test#{n + 1}@example.com",
+    name: "テストユーザー#{n + 1}",
+    password: "bbabcd",
+    introduction: "テストユーザー#{n + 1}です。",
+    website_info: "他のサイト(http:example.com)でテストユーザー#{n + 1}の作品を販売しています。",
+  )
+end
+
+genres = Genre.create!([
+  {name: "パーツアクセサリー"},
+  {name: "ビーズ"},
+  {name: "レジン"},
+  {name: "粘土"},
+  {name: "フェルト"},
+  {name: "ソーイング"},
+  {name: "刺繍"},
+  {name: "編み物"},
+  {name: "キルト"},
+  {name: "ペーパークラフト"},
+  {name: "フラワークラフト"},
+  {name: "プラバン"},
+  {name: "DIY"},
+  {name: "その他"},
+])

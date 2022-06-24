@@ -19,7 +19,7 @@
               <%= comment.member.name %>
             </td>
             <td>
-              <%= link_to admin_post_path(comment.post) do %>
+              <%= link_to admin_post_path(comment.post), class: "index-link" do %>
                 <%= comment.comment %>
               <% end %>
             </td>
