@@ -52,8 +52,8 @@
     <div class="col-md-4 border border-secondary p-4 h-100 rounded ml-5 mt-5">
       <p>
         <%= link_to member_path(@member) do %>
-        <%= image_tag @member.get_profile_image(50, 50), class: "rounded-circle profile-image" %>
-        <span class="h6"><%= @member.name %></span>
+          <%= image_tag @member.get_profile_image(50, 50), class: "rounded-circle profile-image" %>
+          <span class="h6"><%= @member.name %></span>
         <% end %>
         <%= render "public/relationships/btn", member: @member %>
       </p>
