@@ -27,9 +27,9 @@
           <th>管理ステータス</th>
           <td>
             <% if @member.is_void == true %>
-              <span class="text-danger">無効</span>
+              <span class="text-danger">利用停止</span>
             <% elsif @member.is_void == false %>
-              <span class="text-success">有効</span>
+              <span class="text-success">利用可</span>
             <% end %>
           </td>
         </tr>
