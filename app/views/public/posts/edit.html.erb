@@ -9,9 +9,16 @@
         <%= render 'form', f: f %>
         <div class="form-group row mb-5">
           <%= f.submit "変更を保存", class: "btn btn-success px-5 offset-3" %>
-          <%= link_to "削除する", post_path(@post), method: :delete, "data-confirm" => "本当に削除しますか？" , class: "btn btn-danger ml-5" %>
+          <% if @post.post_materials.exists? %>
+            <%= link_to "材料編集", post_post_materials_path(@post), class: "btn btn-info ml-5 px-4" %>
+          <% else %>
+            <%= link_to "材料新規登録", new_post_post_material_path(@post), class: "btn btn-info  ml-5 px-4" %>
+          <% end %>
         </div>
       <% end %>
+      <div class="row mb-5">
+        <%= link_to "作品を削除する", post_path(@post), method: :delete, "data-confirm" => "本当に削除しますか？" , class: "btn btn-danger offset-3 px-4" %>
+      </div>
       <p><%= link_to "作品管理画面に戻る", posts_post_management_path %></p>
     </div>
   </div>

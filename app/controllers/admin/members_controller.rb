@@ -38,7 +38,7 @@ class Admin::MembersController < ApplicationController
 
       # 管理ステータスが変更になった時
       if @member.saved_change_to_is_void?
-        # 管理ステータスが「無効」に変更で作品・コメントを非表示
+        # 管理ステータスが「利用停止」に変更で作品・コメントを非表示
         if @member.is_void == true
           posts.each do |post|
             post.update(is_hidden: true)
@@ -46,7 +46,7 @@ class Admin::MembersController < ApplicationController
           comments.each do |comment|
             comment.update(is_hidden: true)
           end
-        # 管理ステータスが「有効」に変更で作品・コメントを表示
+        # 管理ステータスが「利用可」に変更で作品・コメントを表示
         elsif @member.is_void == false && @member.is_deleted == false
           posts.each do |post|
             post.update(is_hidden: false)

@@ -1,5 +1,6 @@
 class Public::PostMaterialsController < ApplicationController
   before_action :authenticate_member!
+  before_action :ensure_correct_member
 
   def new
     @post = Post.find(params[:post_id])
@@ -18,7 +19,8 @@ class Public::PostMaterialsController < ApplicationController
         post_material.save!
       end
       flash[:notice] = "登録が完了しました"
-      redirect_to posts_post_management_path
+      post = Post.find(params[:post_id])
+      redirect_to member_post_path(post.member, post)
     end
   rescue => e
     flash[:alert] = "登録に失敗しました"
@@ -57,7 +59,7 @@ class Public::PostMaterialsController < ApplicationController
         post_material.save!
       end
       flash[:notice] = "登録が完了しました"
-      redirect_to posts_post_management_path
+      redirect_to member_post_path(post.member, post)
     end
   rescue => e
     flash[:alert] = "登録に失敗しました"
@@ -76,7 +78,7 @@ class Public::PostMaterialsController < ApplicationController
         post_material.destroy!
       end
       flash[:notice] = "登録を取り消しました"
-      redirect_to posts_post_management_path
+      redirect_to member_post_path(@post.member, @post)
     end
   rescue
     flash[:alert] = "登録取消に失敗しました"
@@ -88,6 +90,14 @@ class Public::PostMaterialsController < ApplicationController
 
   def post_material_params
     params.require(:post_material).permit(:post_id, material_id:[])
+  end
+
+  def ensure_correct_member
+    post = Post.find(params[:post_id])
+    @member = post.member_id
+    unless @member == current_member.id
+      redirect_to root_path
+    end
   end
 
 end

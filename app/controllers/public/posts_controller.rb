@@ -1,5 +1,7 @@
 class Public::PostsController < ApplicationController
   before_action :authenticate_member!, except: [:show, :index, :tag_search, :genre_search]
+  before_action :ensure_correct_member, only:[:edit, :update, :destroy]
+  before_action :ensure_correct_post, only:[:show]
 
   def new
     @post = Post.new(session[:post] || {})
@@ -85,6 +87,29 @@ class Public::PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:member_id, :genre_id, :title, :explanation, :is_published, :post_image)
+  end
+
+  def ensure_correct_member
+    post = Post.find(params[:id])
+    @member = post.member_id
+    unless @member == current_member.id
+      redirect_to root_path
+    end
+  end
+
+  # 非公開作品の閲覧権限確認（管理者と投稿者のみ閲覧可）
+  def ensure_correct_post
+    post = Post.find(params[:id])
+    @member = post.member_id
+    unless post.is_hidden == false && post.is_published == true
+      unless member_signed_in?
+        redirect_to root_path
+      else
+        unless @member == current_member.id
+          redirect_to root_path
+        end
+      end
+    end
   end
 
 end

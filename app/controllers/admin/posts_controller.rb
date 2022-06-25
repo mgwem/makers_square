@@ -1,6 +1,6 @@
 class Admin::PostsController < ApplicationController
   before_action :authenticate_admin!
-  
+
   def index
     @posts = Post.page(params[:page]).order(id: :DESC)
   end
@@ -27,18 +27,6 @@ class Admin::PostsController < ApplicationController
     else
       flash[:danger] = @post.errors.full_messages
       redirect_to edit_admin_post_path
-    end
-  end
-
-  def destroy
-    @post = Post.find(params[:id])
-    if @post.destroy
-      flash[:notice] = "作品を削除しました"
-      redirect_to admin_posts_path
-    else
-      @genres = Genre.all
-      @tag_list = @post.tags.pluck(:tag_name).join(",")
-      render :edit
     end
   end
 

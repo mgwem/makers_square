@@ -4,30 +4,60 @@
       <h2>いいねした作品</h2>
 
       <div class="row">
-        <% @favorites.each do |favorite| %>
-          <div class="col-lg-4 col-sm-6 mt-3">
-            <div id ="post_<%= favorite.post.id %>" class="card h-100">
-              <div class="card-image">
-                <%= link_to member_post_path(favorite.post.member , favorite.post) do %>
-                  <%= image_tag favorite.post.get_post_image(200, 200), class: "w-100 card-image" %>
-                <% end %>
-                <div class="h5 index-favorite-btn d-flex align-items-center justify-content-center">
-                  <%= render 'public/favorites/btn', post: favorite.post %>
+        <% if @favorites.exists? %>
+          <% @favorites.each do |favorite| %>
+            <!-- 公開作品 -->
+            <% if favorite.post.is_hidden == false && favorite.post.is_published == true %>
+              <div class="col-lg-4 col-sm-6 mt-3">
+                <div id ="post_<%= favorite.post.id %>" class="card h-100">
+                  <div class="card-image">
+                    <%= link_to member_post_path(favorite.post.member , favorite.post) do %>
+                      <%= image_tag favorite.post.get_post_image(200, 200), class: "w-100 card-image" %>
+                    <% end %>
+                    <% if member_signed_in? %>
+                      <div class="h5 index-favorite-btn d-flex align-items-center justify-content-center">
+                        <%= render 'public/favorites/btn', post: favorite.post %>
+                      </div>
+                    <% end %>
+                  </div>
+                <div class="card-body index-card">
+                  <%= link_to member_post_path(favorite.post.member , favorite.post) do %>
+                    <%= favorite.post.title %>
+                  <% end %></br>
+                  <%= link_to member_path(favorite.post.member) do %>
+                  <span>by <%= favorite.post.member.name %></span>
+                  <% end %>
+                </div>
                 </div>
               </div>
-            <div class="card-body index-card">
-              <%= link_to member_post_path(favorite.post.member , favorite.post) do %>
-                <%= favorite.post.title %>
-              <% end %></br>
-              <%= link_to member_path(favorite.post.member) do %>
-              <span>by <%= favorite.post.member.name %></span>
-              <% end %>
-            </div>
-            </div>
+            <!-- 非公開作品 -->
+            <% else %>
+              <div class="col-lg-4 col-sm-6 mt-3">
+                <div id ="post_<%= favorite.post.id %>" class="card h-100">
+                  <div class="card-image">
+                    <%= image_tag 'no-image.png', class: "w-100 card-image" %>
+                    <% if member_signed_in? %>
+                      <% if @member == current_member %>
+                        <div class="h5 index-favorite-btn d-flex align-items-center justify-content-center">
+                          <%= render 'public/favorites/btn', post: favorite.post %>
+                        </div>
+                      <% end %>
+                    <% end %>
+                  </div>
+                  <div class="card-body index-card">
+                    <p>非公開作品です</p>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        <% else %>
+          <div class="container">
+            <h5 class="text-center mt-5">いいねをしている作品はありません</h5>
           </div>
         <% end %>
-        <%= paginate @favorites %>
       </div>
+      <%= paginate @favorites %>
 
     </div>
   </div>
