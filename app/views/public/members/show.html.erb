@@ -25,7 +25,7 @@
         <td>フォロー</td>
         <td>
           <%= link_to member_followings_path(@member) do %>
-            <%= @member.followings.count %>
+            <%= @member.followings.recent_member.count %>
           <% end %>
         </td>
       </tr>
@@ -33,7 +33,7 @@
         <td>フォロワー</td>
         <td>
           <%= link_to member_followers_path(@member) do %>
-            <%= @member.followers.count %>
+            <%= @member.followers.recent_member.count %>
           <% end %>
         </td>
       </tr>

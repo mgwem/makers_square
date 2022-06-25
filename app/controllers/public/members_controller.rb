@@ -2,6 +2,7 @@ class Public::MembersController < ApplicationController
   before_action :authenticate_member!, except: [:show, :posts]
   before_action :ensure_guest_member, only: [:edit]
   before_action :ensure_correct_member, only: [:edit, :update,]
+  before_action :ensure_active_member, only: [:show, :posts]
 
   def my_page
     @member = current_member
@@ -74,6 +75,14 @@ class Public::MembersController < ApplicationController
   def ensure_correct_member
     @member = Member.find(params[:id])
     unless @member == current_member
+      redirect_to root_path
+    end
+  end
+
+  # 非公開ユーザー確認
+  def ensure_active_member
+    @member = Member.find(params[:id])
+    unless @member.is_deleted == false && @member.is_void == false
       redirect_to root_path
     end
   end
