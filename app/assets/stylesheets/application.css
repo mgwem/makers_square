@@ -23,6 +23,18 @@ a:hover{
   text-decoration: none;
 }
 
+nav {
+  position: relative;
+}
+
+/* header login_userアイコン */
+.login-user {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+}
+
 .wrapper {
   min-height: 100vh;
   position: relative;
