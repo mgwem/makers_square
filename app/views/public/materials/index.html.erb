@@ -33,7 +33,7 @@
                 <%= link_to "編集", edit_material_path(material), class: "btn btn-warning text-white" %>
               </td>
               <td>
-                <%= link_to "削除", material_path(material), method: :delete, "data-confirm" => "本当に削除しますか？作品材料として登録している場合、作品画面からも材料が削除されます。", class: "btn btn-danger" %>
+                <%= link_to "削除", material_path(material), method: :delete, "data-confirm" => "本当に削除しますか？\n作品材料として登録している場合、作品画面からも材料が削除されます。", class: "btn btn-danger" %>
               </td>
             </tr>
           <% end %>
