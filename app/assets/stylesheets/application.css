@@ -65,6 +65,12 @@ footer {
   height: 70px;
 }
 
+/* devise関連リンク */
+.devise-link {
+  color: #808000;
+  text-decoration: underline;
+}
+
 /* cardで表示している画像 */
 .card-image {
   position: relative;
@@ -151,7 +157,7 @@ footer {
 /* kaminari hover */
 .page-link:hover {
   color: white;
-  background-color: #3cb371;
+  background-color: #8fbc8f;
 }
 
 /* kaminari 現在のページ */
