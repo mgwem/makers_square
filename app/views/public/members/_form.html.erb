@@ -33,7 +33,7 @@
     <%= f.label :introduction, "自己紹介", class: "col-form-label" %>
   </div>
   <div class="col-md-8">
-    <%= f.text_area :introduction, rows:5, class: "form-control" %>
+    <%= f.text_area :introduction, rows:5, placeholder: "200字以内", class: "form-control" %>
   </div>
 </div>
 <div class="form-group row">
@@ -41,6 +41,6 @@
     <%= f.label :website_info, "サイト情報", class: "col-form-label" %>
   </div>
   <div class="col-md-8">
-    <%= f.text_area :website_info, rows:5, class: "form-control" %>
+    <%= f.text_area :website_info, rows:5, placeholder: "販売サイト:http:example.com（400字以内）", class: "form-control" %>
   </div>
 </div>

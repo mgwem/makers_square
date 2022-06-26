@@ -1,6 +1,7 @@
 class Public::PostsController < ApplicationController
   before_action :authenticate_member!, except: [:show, :index, :tag_search, :genre_search]
   before_action :ensure_correct_member, only:[:edit, :update, :destroy]
+  before_action :ensure_correct_post_member, only:[:show]
   before_action :ensure_correct_post, only:[:show]
 
   def new
@@ -66,21 +67,26 @@ class Public::PostsController < ApplicationController
 
   def index
     @posts = Post.recent.page(params[:page])
+    @genres = Genre.all
   end
 
+  # 作品管理
   def post_management
     @member = current_member
     @posts = @member.posts.sorted.page(params[:page])
   end
 
+  # タグのリンク押下時
   def tag_search
     @tag = Tag.find(params[:tag_id])
     @posts = @tag.posts.recent.page(params[:page])
   end
 
+  # ジャンル検索
   def genre_search
     @genre = Genre.find(params[:genre_id])
     @posts = @genre.posts.recent.page(params[:page])
+    @genres = Genre.all
   end
 
   private
@@ -93,6 +99,15 @@ class Public::PostsController < ApplicationController
     post = Post.find(params[:id])
     @member = post.member_id
     unless @member == current_member.id
+      redirect_to root_path
+    end
+  end
+
+  # 作品詳細URLで作品の投稿者とmember_idが合わなければトップ画面に遷移
+  def ensure_correct_post_member
+    post = Post.find(params[:id])
+    member = Member.find(params[:member_id])
+    unless member.id == post.member_id
       redirect_to root_path
     end
   end

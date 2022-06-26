@@ -20,30 +20,7 @@
           <%= image_tag @member.get_profile_image(100, 100), class: "rounded-circle profile-image-big" %>
         </div>
         <table class="table">
-          <tr>
-            <th>ユーザー名</th>
-            <td>
-              <%= @member.name %>
-            </td>
-          </tr>
-          <tr>
-            <th>メールアドレス</th>
-            <td>
-              <%= @member.email %>
-            </td>
-          </tr>
-          <tr>
-            <th>紹介文</th>
-            <td>
-              <%= @member.introduction %>
-            </td>
-          </tr>
-          <tr>
-            <th>サイト情報</th>
-            <td>
-              <%= @member.website_info %>
-            </td>
-          </tr>
+          <%= render 'info', member: @member %>
         </table>
 
         <div class="ml-5 mt-5">

@@ -12,7 +12,7 @@
             <div id ="post_<%= post.id %>" class="card h-100">
               <div class="card-image">
                 <%= link_to member_post_path(post.member , post) do %>
-                  <%= image_tag post.get_post_image(200, 200), class: "w-100 card-image" %>
+                  <%= image_tag post.get_post_image(350, 350), class: "w-100 card-image" %>
                 <% end %>
                 <% if member_signed_in? %>
                   <div class="h5 index-favorite-btn d-flex align-items-center justify-content-center">
@@ -38,20 +38,7 @@
     </div>
     <!-- ジャンル一覧 -->
     <div class="col-md-3 offset-md-1 mt-5">
-      <table class="table">
-        <tr>
-          <th>ジャンル</th>
-        </tr>
-        <% @genres.each do |genre| %>
-          <tr>
-            <td>
-              <%= link_to genre_genre_search_path(genre) do %>
-              <%= genre.name %>
-              <% end %>
-            </td>
-          </tr>
-        <% end %>
-      </table>
+      <%= render 'public/posts/genre_index', genres: @genres %>
     </div>
   </div>
 </div>

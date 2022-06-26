@@ -23,6 +23,18 @@ a:hover{
   text-decoration: none;
 }
 
+nav {
+  position: relative;
+}
+
+/* header login_userアイコン */
+.login-user {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+}
+
 .wrapper {
   min-height: 100vh;
   position: relative;
@@ -53,8 +65,11 @@ footer {
   height: 70px;
 }
 
+/* cardで表示している画像 */
 .card-image {
   position: relative;
+  height: 200px;
+  background-size: cover;
 }
 
 /* カードで表示している時のいいねボタン */
@@ -73,12 +88,6 @@ footer {
   box-shadow: 2px 2px 5px #d3d3d3;
 }
 
-/* cardで表示している画像 */
-.card-image {
-  height: 200px;
-  background-size: cover;
-}
-
 /* idexページtableのimage */
 .index-image {
   height: 60px;
@@ -89,7 +98,7 @@ footer {
 /* adminのindexページリンク */
 .index-link {
   color: #808000;
-  border-bottom: 1px solid #808000;
+  text-decoration: underline;
 }
 
 /* adminトップ画面のユーザー画像 */
@@ -131,5 +140,34 @@ footer {
 .post-memberpost-image {
   height: 95px;
   width: 95px;
+  background-size: cover;
+}
+
+/* kaminari */
+.page-link {
+  color: #3cb371;
+}
+
+/* kaminari hover */
+.page-link:hover {
+  color: white;
+  background-color: #3cb371;
+}
+
+/* kaminari 現在のページ */
+.pagination .active .page-link {
+  color: white;
+  background-color: #3cb371;
+  border-color:#3cb371;
+}
+
+/* 作品材料のcard */
+.post-material-card {
+  width: 23%;
+}
+
+/* 作品材料のcardの画像 */
+.card-material-image {
+  height: 110px;
   background-size: cover;
 }

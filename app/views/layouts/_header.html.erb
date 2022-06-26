@@ -68,16 +68,18 @@
             <% end %>
             </ul>
           </div>
-          <% if member_signed_in? %>
-            <div class="text-right">
-            <%= image_tag current_member.get_profile_image(50, 50), class: "rounded-circle profile-image" %>
-            <span class="ml-2 text-white"><%= current_member.name %>さん</span>
-            </div>
-          <% elsif admin_signed_in? %>
-            <div class="text-right">
-            <span class="text-white">< 管理者 ></span>
-            </div>
-          <% end %>
+          <div class="login-user">
+            <% if member_signed_in? %>
+              <div class="text-right">
+              <%= image_tag current_member.get_profile_image(50, 50), class: "rounded-circle profile-image" %>
+              <span class="ml-2 text-white"><%= current_member.name %>さん</span>
+              </div>
+            <% elsif admin_signed_in? %>
+              <div class="text-right">
+              <span class="text-white">< 管理者 ></span>
+              </div>
+            <% end %>
+          </div>
         </div>
       </nav>
     </header>
