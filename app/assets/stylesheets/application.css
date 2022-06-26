@@ -65,6 +65,12 @@ footer {
   height: 70px;
 }
 
+/* devise関連リンク */
+.devise-link {
+  color: #808000;
+  text-decoration: underline;
+}
+
 /* cardで表示している画像 */
 .card-image {
   position: relative;
