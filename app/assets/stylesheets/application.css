@@ -65,8 +65,11 @@ footer {
   height: 70px;
 }
 
+/* cardで表示している画像 */
 .card-image {
   position: relative;
+  height: 200px;
+  background-size: cover;
 }
 
 /* カードで表示している時のいいねボタン */
@@ -83,12 +86,6 @@ footer {
 
 .card {
   box-shadow: 2px 2px 5px #d3d3d3;
-}
-
-/* cardで表示している画像 */
-.card-image {
-  height: 200px;
-  background-size: cover;
 }
 
 /* idexページtableのimage */
@@ -162,4 +159,13 @@ footer {
   color: white;
   background-color: #3cb371;
   border-color:#3cb371;
+}
+
+.post-material-card {
+  width: 23%;
+}
+
+.card-material-image {
+  height: 110px;
+  background-size: cover;
 }
