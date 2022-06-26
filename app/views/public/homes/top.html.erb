@@ -38,20 +38,7 @@
     </div>
     <!-- ジャンル一覧 -->
     <div class="col-md-3 offset-md-1 mt-5">
-      <table class="table">
-        <tr>
-          <th>ジャンル</th>
-        </tr>
-        <% @genres.each do |genre| %>
-          <tr>
-            <td>
-              <%= link_to genre_genre_search_path(genre) do %>
-              <%= genre.name %>
-              <% end %>
-            </td>
-          </tr>
-        <% end %>
-      </table>
+      <%= render 'public/posts/genre_index', genres: @genres %>
     </div>
   </div>
 </div>
