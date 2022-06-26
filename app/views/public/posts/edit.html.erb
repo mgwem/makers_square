@@ -7,8 +7,8 @@
 
       <%= form_with model: @post, local: true do |f| %>
         <%= render 'form', f: f %>
-        <div class="form-group d-flex mb-5">
-          <%= f.submit "変更を保存", class: "btn btn-success px-5 my-2 ml-5" %>
+        <div class="form-group d-flex mb-5 justify-content-center">
+          <%= f.submit "変更を保存", class: "btn btn-success px-5 my-2" %>
           <% if @post.post_materials.exists? %>
             <%= link_to "材料編集", post_post_materials_path(@post), class: "btn btn-info ml-5 px-4 my-2" %>
           <% else %>
