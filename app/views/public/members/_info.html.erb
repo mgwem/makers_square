@@ -13,12 +13,20 @@
 <tr>
   <th>自己紹介</th>
   <td>
-    <%= member.introduction %>
+    <% if member.introduction.nil? %>
+      <%= member.introduction %>
+    <% else %>
+      <%= safe_join(member.introduction.split("\n"), tag(:br)) %>
+    <% end %>
   </td>
 </tr>
 <tr>
   <th>サイト情報</th>
   <td>
-    <%= member.website_info %>
+    <% if member.website_info.nil? %>
+      <%= member.website_info %>
+    <% else %>
+      <%= safe_join(member.website_info.split("\n"), tag(:br)) %>
+    <% end %>
   </td>
 </tr>

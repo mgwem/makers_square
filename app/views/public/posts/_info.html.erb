@@ -5,4 +5,10 @@
   <%= render 'public/favorites/btn', post: post %>
   <span class="text-danger favorite-count"> <%= post.favorites.count %></span>
 </p>
-<p><%= post.explanation %></p>
+<p>
+  <% if post.explanation.nil? %>
+    <%= post.explanation %>
+  <% else %>
+    <%= safe_join(post.explanation.split("\n"), tag(:br)) %>
+  <% end %>
+</p>

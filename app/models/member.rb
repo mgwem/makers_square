@@ -17,6 +17,8 @@ class Member < ApplicationRecord
 
   validates :name, presence: true
   validates :email, presence: true, uniqueness: true
+  validates :introduction, length: {maximum:200}
+  validates :website_info, length: {maximum:400}
   validates :is_void, inclusion:{in: [true, false]}
   validates :is_deleted, inclusion:{in: [true, false]}
 
