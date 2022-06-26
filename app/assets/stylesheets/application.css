@@ -101,7 +101,7 @@ footer {
 /* adminのindexページリンク */
 .index-link {
   color: #808000;
-  border-bottom: 1px solid #808000;
+  text-decoration: underline;
 }
 
 /* adminトップ画面のユーザー画像 */
@@ -144,4 +144,22 @@ footer {
   height: 95px;
   width: 95px;
   background-size: cover;
+}
+
+/* kaminari */
+.page-link {
+  color: #3cb371;
+}
+
+/* kaminari hover */
+.page-link:hover {
+  color: white;
+  background-color: #3cb371;
+}
+
+/* kaminari 現在のページ */
+.pagination .active .page-link {
+  color: white;
+  background-color: #3cb371;
+  border-color:#3cb371;
 }
