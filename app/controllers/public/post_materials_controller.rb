@@ -5,7 +5,7 @@ class Public::PostMaterialsController < ApplicationController
   def new
     @post = Post.find(params[:post_id])
     @post_material = PostMaterial.new
-    @materials = current_member.materials
+    @materials = current_member.materials.order(created_at: :DESC)
   end
 
   def create
@@ -35,7 +35,7 @@ class Public::PostMaterialsController < ApplicationController
   def index
     @post = Post.find(params[:post_id])
     @post_material = PostMaterial.new
-    @materials = current_member.materials
+    @materials = current_member.materials.order(created_at: :DESC)
     @post_materials = @post.post_materials
   end
 

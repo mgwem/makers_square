@@ -1,6 +1,7 @@
 class Public::PostsController < ApplicationController
   before_action :authenticate_member!, except: [:show, :index, :tag_search, :genre_search]
   before_action :ensure_correct_member, only:[:edit, :update, :destroy]
+  before_action :ensure_correct_post_member, only:[:show]
   before_action :ensure_correct_post, only:[:show]
 
   def new
@@ -93,6 +94,15 @@ class Public::PostsController < ApplicationController
     post = Post.find(params[:id])
     @member = post.member_id
     unless @member == current_member.id
+      redirect_to root_path
+    end
+  end
+  
+  # 作品詳細URLで作品の投稿者とmember_idが合わなければトップ画面に遷移
+  def ensure_correct_post_member
+    post = Post.find(params[:id])
+    member = Member.find(params[:member_id])
+    unless member.id == post.member_id
       redirect_to root_path
     end
   end
