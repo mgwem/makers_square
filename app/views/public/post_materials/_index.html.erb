@@ -2,14 +2,14 @@
   <h5 class="mt-5 mb-3"><使用材料></h5>
   <div class="d-flex flex-wrap justify-content-center">
     <% materials.each do |material| %>
-        <div class="card post-material-card mb-2 mr-2">
-          <%= image_tag material.get_material_image(110, 110), class: "card-material-image card-img-top" %>
-          <div class="card-body">
-            <font size="2">
-              <%= material.name %>
-            </font>
-          </div>
+      <div class="card post-material-card mb-2 mr-2">
+        <%= image_tag material.get_material_image(110, 110), class: "card-material-image card-img-top" %>
+        <div class="card-body">
+          <font size="2">
+            <%= material.name %>
+          </font>
         </div>
+      </div>
     <% end %>
   </div>
 <% end %>
