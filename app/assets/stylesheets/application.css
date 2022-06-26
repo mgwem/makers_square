@@ -161,10 +161,12 @@ footer {
   border-color:#3cb371;
 }
 
+/* 作品材料のcard */
 .post-material-card {
   width: 23%;
 }
 
+/* 作品材料のcardの画像 */
 .card-material-image {
   height: 110px;
   background-size: cover;
