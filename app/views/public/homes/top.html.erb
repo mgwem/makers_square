@@ -21,7 +21,7 @@
                 <% end %>
               </div>
               <div class="card-body">
-                <%= link_to member_post_path(post.member , post) do %>
+                <%= link_to member_post_path(post.member , post), class: "font-weight-bold" do %>
                   <%= post.title %>
                 <% end %></br>
                 <%= link_to member_path(post.member) do %>

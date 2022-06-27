@@ -1,6 +1,6 @@
 <h4 class="mb-3">コメント (<%= post.comments.recent_comment.count %>件)</h4>
 <% post.comments.recent_comment.each do |comment| %>
-  <div class="row my-2">
+  <div class="row my-3">
     <div class="col-1 mr-2">
     <%= link_to member_path(comment.member) do %>
       <%= image_tag comment.member.get_profile_image(40, 40), class: "rounded-circle profile-image-small" %>

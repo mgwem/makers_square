@@ -21,7 +21,7 @@
                     <% end %>
                   </div>
                 <div class="card-body index-card">
-                  <%= link_to member_post_path(favorite.post.member , favorite.post) do %>
+                  <%= link_to member_post_path(favorite.post.member , favorite.post), class: "font-weight-bold" do %>
                     <%= favorite.post.title %>
                   <% end %></br>
                   <%= link_to member_path(favorite.post.member) do %>
