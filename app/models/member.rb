@@ -28,8 +28,10 @@ class Member < ApplicationRecord
   scope :active, -> { where(is_deleted: false) }
   # created_atカラムを降順に並び替え
   scope :sorted, -> { order(created_at: :DESC) }
-  # 公開作品を新着順に並び替え
+  # 公開ユーザーを新着順に並び替え
   scope :recent_member, -> { valid.active.sorted }
+  # 公開ユーザーを表示
+  scope :published_member, -> { valid.active }
 
   # ゲストログイン
   def self.guest
