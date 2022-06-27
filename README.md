@@ -22,6 +22,27 @@
 
 ## 設計書
 
+- [UI Flows](https://drive.google.com/file/d/1ZIoH7jiXzwiuJFh62OuFTY0jesrICvWM/view?usp=sharing)
+- ワイヤーフレーム([会員](https://drive.google.com/file/d/1mbpSssUGkcGQQolbkwnU848980YjRolW/view?usp=sharing)/[管理者](https://drive.google.com/file/d/19gVdFyeUxsnFFx2Z3yv10MkBi5q75Ho_/view?usp=sharing))
+- [ER図](https://drive.google.com/file/d/1Ks0YaPF2amLIoOcPFRtlo_AsGcRisX1b/view?usp=sharing)
+- [テーブル定義書](https://docs.google.com/spreadsheets/d/1qo1Ob-d7PMNCu7seNtrgznqbCYNjqyDJBAdRxt1WLuM/edit?usp=sharing)
+- [詳細設計書](https://docs.google.com/spreadsheets/d/1SCLDNOno2XNpoH9YpqERVLOfLdwIm8EY2hcCXoJnPBY/edit?usp=sharing)
+
+## 機能一覧
+
+- ユーザー認証
+- 作品投稿機能
+- コメント機能
+- いいね機能
+- フォロー機能
+- 作品の公開、非公開設定
+- 材料登録機能
+  - 作品作りに使用する材料を登録し、在庫管理に使用
+- 作品材料登録機能
+  - 作品に使用した材料を登録し、作品詳細に使用材料を表示
+- 検索機能(ジャンル、キーワード、タグ)
+- 管理者による管理機能(会員、作品、コメント)
+
 ## 開発環境
 
 - OS：Linux(CentOS)
@@ -29,5 +50,3 @@
 - フレームワーク：Ruby on Rails
 - JS ライブラリ：jQuery
 - IDE：Cloud9
-
-## 使用素材
