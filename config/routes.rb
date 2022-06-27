@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
 
-  namespace :public do
-    get 'post_materials/new'
-    get 'post_materials/edit'
-  end
   # devise管理者側
   devise_for :admin, skip: [:registrations, :passwords],controllers: {
     sessions: "admin/sessions"
