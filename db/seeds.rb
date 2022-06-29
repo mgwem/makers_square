@@ -11,7 +11,7 @@ Admin.create!(
   password: 'ccabcd',
 )
 
-15.times do |n|
+12.times do |n|
   Member.create!(
     email: "test#{n + 1}@example.com",
     name: "テストユーザー#{n + 1}",
