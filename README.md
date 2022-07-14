@@ -1,4 +1,6 @@
 # Makers Square
+URL:https://makers-square.work/  
+ログインページの「ゲストログイン」ボタンからゲストユーザーとしてログイン
 
 ## サイト概要
 
