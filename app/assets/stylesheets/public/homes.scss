@@ -73,20 +73,24 @@
   transform: translate(0%, -50%);
 }
 
-/* topページのlogo画像の幅（mobile画面) */
 @media screen and (max-width:425px) {
+  /* topページのlogo背景画像の幅 */
   .top_image {
     height: 290px;
   }
+  /* topページのlogo画像の幅 */
   .top_logo {
     width: 90%;
   }
+  /* aboutページのタイトル背景画像 */
   .about_image {
     height: 300px;
   }
+  /* aboutページの材料管理機能説明 */
   .material {
     margin-top: 70px;
   }
+  /* aboutページの機能説明 画像透過 */
   .explanation-bg {
     background: rgba(255, 255, 255, 0.4);
     height: 100%;

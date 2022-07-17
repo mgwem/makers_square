@@ -183,9 +183,13 @@ footer {
   width: 450px;
 }
 
-/* headerのlogo画像の幅（mobile画面) */
 @media screen and (max-width:425px) {
+  /* headerのlogo画像の幅（mobile画面) */
   .header-logo {
     width: 90%;
+  }
+  /* posts/showのユーザー詳細 */
+  .user-info {
+    margin: 30px;
   }
 }
