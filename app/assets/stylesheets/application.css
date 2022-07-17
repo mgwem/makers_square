@@ -177,3 +177,15 @@ footer {
   height: 110px;
   background-size: cover;
 }
+
+/* headerのlogo画像の幅 */
+.header-logo {
+  width: 450px;
+}
+
+/* headerのlogo画像の幅（mobile画面) */
+@media screen and (max-width:425px) {
+  .header-logo {
+    width: 90%;
+  }
+}
