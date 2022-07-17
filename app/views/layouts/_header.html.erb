@@ -2,11 +2,11 @@
    <div class="text-center">
      <% if admin_signed_in? %>
        <%= link_to admin_root_path do %>
-         <%= image_tag 'logo-01.png', size: "450x120" %>
+         <%= image_tag 'logo-01.png', class: "header-logo" %>
        <% end %>
       <% else %>
        <%= link_to root_path do %>
-         <%= image_tag 'logo-01.png', size: "450x120" %>
+         <%= image_tag 'logo-01.png', class: "header-logo" %>
        <% end %>
       <% end %>
    </div>
@@ -71,8 +71,10 @@
           <div class="login-user">
             <% if member_signed_in? %>
               <div class="text-right">
-              <%= image_tag current_member.get_profile_image(50, 50), class: "rounded-circle profile-image" %>
-              <span class="ml-2 text-white"><%= current_member.name %>さん</span>
+                <%= link_to members_my_page_path do %>
+                  <%= image_tag current_member.get_profile_image(50, 50), class: "rounded-circle profile-image" %>
+                  <span class="ml-2 text-white"><%= current_member.name %>さん</span>
+                <% end %>
               </div>
             <% elsif admin_signed_in? %>
               <div class="text-right">

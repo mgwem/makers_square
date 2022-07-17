@@ -2,6 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+/* topページのlogoの背景画像 */
 .top_image {
   position: relative;
   with: 100%;
@@ -12,6 +13,7 @@
   background-position: center;
 }
 
+/* topページのlogo画像 */
 .top_logo {
   position: absolute;
   top: 50%;
@@ -20,6 +22,7 @@
   width: 500px;
 }
 
+/* aboutページのタイトル背景画像 */
 .about_image {
   position: relative;
   with: 100%;
@@ -30,6 +33,7 @@
   background-position: center;
 }
 
+/* aboutページのタイトル */
 .about {
   position: absolute;
   top: 50%;
@@ -39,6 +43,7 @@
   color: #2e8b57;
 }
 
+/* aboutページの作品投稿機能画像 */
 .post {
   position: relative;
   margin-top: 80px;
@@ -49,6 +54,7 @@
   height: 150px;
 }
 
+/* aboutページの材料管理機能画像 */
 .material {
   position: relative;
   margin-top: 50px;
@@ -59,9 +65,34 @@
   height: 150px;
 }
 
+/* aboutページ機能説明テキスト */
 .explanation {
   position: absolute;
   top: 50%;
   left: 30%;
   transform: translate(0%, -50%);
+}
+
+@media screen and (max-width:425px) {
+  /* topページのlogo背景画像の幅 */
+  .top_image {
+    height: 290px;
+  }
+  /* topページのlogo画像の幅 */
+  .top_logo {
+    width: 90%;
+  }
+  /* aboutページのタイトル背景画像 */
+  .about_image {
+    height: 300px;
+  }
+  /* aboutページの材料管理機能説明 */
+  .material {
+    margin-top: 70px;
+  }
+  /* aboutページの機能説明 画像透過 */
+  .explanation-bg {
+    background: rgba(255, 255, 255, 0.4);
+    height: 100%;
+  }
 }
