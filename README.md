@@ -1,5 +1,5 @@
 # Makers Square
-URL:https://makers-square.work/<br>
+#### https://makers-square.work/
 ログインページの「ゲストログイン」ボタンからゲストユーザーとしてログインできます。
 
 ## サイト概要
@@ -34,9 +34,9 @@ URL:https://makers-square.work/<br>
 
 - ユーザー認証
 - 作品投稿機能
-- コメント機能
-- いいね機能
-- フォロー機能
+- コメント機能(非同期通信)
+- いいね機能(非同期通信)
+- フォロー機能(非同期通信)
 - 作品の公開、非公開設定
 - 材料登録機能
   - 作品作りに使用する材料を登録し、在庫管理に使用
@@ -52,3 +52,6 @@ URL:https://makers-square.work/<br>
 - フレームワーク：Ruby on Rails
 - JS ライブラリ：jQuery
 - IDE：Cloud9
+
+## 使用素材
+- [Font Awesome(アイコン)](https://fontawesome.com/)
