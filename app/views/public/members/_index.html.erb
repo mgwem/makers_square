@@ -5,16 +5,16 @@
         <%= link_to member_path(member) do %>
           <%= image_tag member.get_profile_image(200, 200), class: "w-100 card-image" %>
         <% end %>
-      <div class="card-body">
-        <div class="text-center">
-        <%= link_to member_path(member) do %>
-          <%= member.name %>
-        <% end %>
+        <div class="card-body">
+          <div class="text-center">
+            <%= link_to member_path(member) do %>
+              <%= member.name %>
+            <% end %>
+          </div>
+          <div class="text-center mt-2", id="member_<%= member.id %>">
+            <%= render "public/relationships/btn", member: member %>
+          </div>
         </div>
-        <div class="text-center mt-2">
-          <%= render "public/relationships/btn", member: member %>
-        </div>
-      </div>
       </div>
     </div>
   <% end %>
