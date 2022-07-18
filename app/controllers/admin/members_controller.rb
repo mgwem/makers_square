@@ -12,27 +12,15 @@ class Admin::MembersController < ApplicationController
   def update
     @member = Member.find(params[:id])
     if @member.update(member_params)
-      posts = @member.posts
-      comments = @member.comments
 
       # 会員ステータスが変更になった時
       if @member.saved_change_to_is_deleted?
         # 会員ステータスが「退会済み」に変更で作品・コメントを非表示
         if @member.is_deleted == true
-          posts.each do |post|
-            post.update(is_hidden: true)
-          end
-          comments.each do |comment|
-            comment.update(is_hidden: true)
-          end
+          status_change(true)
         # 会員ステータスが「利用中」に変更で作品・コメントを表示
         elsif @member.is_deleted == false && @member.is_void == false
-          posts.each do |post|
-            post.update(is_hidden: false)
-          end
-          comments.each do |comment|
-            comment.update(is_hidden: false)
-          end
+          status_change(false)
         end
       end
 
@@ -40,20 +28,10 @@ class Admin::MembersController < ApplicationController
       if @member.saved_change_to_is_void?
         # 管理ステータスが「利用停止」に変更で作品・コメントを非表示
         if @member.is_void == true
-          posts.each do |post|
-            post.update(is_hidden: true)
-          end
-          comments.each do |comment|
-            comment.update(is_hidden: true)
-          end
+          status_change(true)
         # 管理ステータスが「利用可」に変更で作品・コメントを表示
         elsif @member.is_void == false && @member.is_deleted == false
-          posts.each do |post|
-            post.update(is_hidden: false)
-          end
-          comments.each do |comment|
-            comment.update(is_hidden: false)
-          end
+          status_change(false)
         end
       end
       flash[:notice] = "ユーザ情報を更新しました"
@@ -74,4 +52,17 @@ class Admin::MembersController < ApplicationController
   def member_params
     params.require(:member).permit(:name, :email, :introduction, :website_info, :profile_image, :is_void, :is_deleted)
   end
+  
+  # 作品・コメントを表示・非表示を変更
+  def status_change(status)
+    posts = @member.posts
+    comments = @member.comments
+    posts.each do |post|
+      post.update(is_hidden: status)
+    end
+    comments.each do |comment|
+      comment.update(is_hidden: status)
+    end
+  end
+
 end
