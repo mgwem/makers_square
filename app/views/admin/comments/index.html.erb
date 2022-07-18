@@ -35,7 +35,9 @@
               <% end %>
             </td>
             <td>
-              <%= link_to "削除", admin_post_comment_path(comment.post, comment), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-sm btn-danger" %>
+              <%= link_to admin_post_comment_path(comment.post, comment), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-sm btn-danger" do %>
+                <i class="fas fa-trash-alt"></i>
+              <% end %>
             </td>
           </tr>
         <% end %>
