@@ -20,13 +20,18 @@ class Admin::PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     tag_list = params[:post][:tag_name].split(',')
-    if @post.update(post_params)
-      @post.save_tag(tag_list)
-      flash[:notice] = "作品を更新しました"
-      redirect_to admin_post_path(@post)
+    if @post.is_hidden == true && ( @post.member.is_deleted == true || @post.member.is_void == true)
+      flash[:alert] = "会員が退会済みまたは利用停止のため、作品ステータスは更新できません"
+      redirect_to edit_admin_post_path(@post)
     else
-      flash[:danger] = @post.errors.full_messages
-      redirect_to edit_admin_post_path
+      if @post.update(post_params)
+        @post.save_tag(tag_list)
+        flash[:notice] = "作品を更新しました"
+        redirect_to admin_post_path(@post)
+      else
+        flash[:danger] = @post.errors.full_messages
+        redirect_to edit_admin_post_path(@post)
+      end
     end
   end
 
