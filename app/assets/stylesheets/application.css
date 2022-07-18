@@ -193,3 +193,11 @@ footer {
     margin: 30px;
   }
 }
+
+@media screen and (max-width:320px) {
+  /* マイページの作品管理ボタン*/
+  .mypage-post-btn {
+    margin-bottom: 15px;
+    margin-top: 15px;
+  }
+}

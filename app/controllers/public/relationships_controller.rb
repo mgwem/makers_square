@@ -3,20 +3,22 @@ class Public::RelationshipsController < ApplicationController
   before_action :ensure_active_member, only:[:followings, :followers]
 
   def create
-    current_member.follow(params[:member_id])
-    redirect_to request.referer
+    @member = Member.find(params[:member_id])
+    current_member.follow(@member.id)
   end
 
   def destroy
-    current_member.unfollow(params[:member_id])
-    redirect_to request.referer
+    @member = Member.find(params[:member_id])
+    current_member.unfollow(@member.id)
   end
 
+  # フォロー一覧
   def followings
     @member = Member.find(params[:member_id])
     @members = @member.followings.published_member.page(params[:page]).order("relationships.created_at DESC")
   end
 
+  # フォロワー一覧
   def followers
     @member = Member.find(params[:member_id])
     @members = @member.followers.published_member.page(params[:page]).order("relationships.created_at DESC")

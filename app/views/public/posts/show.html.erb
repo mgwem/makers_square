@@ -51,7 +51,7 @@
     </div>
 
     <!-- 作者プロフィール -->
-    <div class="col-md-4 border border-secondary p-4 h-100 rounded offset-md-1 user-info">
+    <div class="col-md-4 border border-secondary p-4 h-100 rounded offset-md-1 user-info", id="member_<%= @member.id %>">
       <p>
         <%= link_to member_path(@member) do %>
           <%= image_tag @member.get_profile_image(50, 50), class: "rounded-circle profile-image" %>
