@@ -3,7 +3,7 @@
     <div class="col-md-8 mx-auto">
       <h2>作品編集</h2>
       <p class="text-danger">*必須</p>
-      <%= render 'layouts/errors', obj: @post %>
+      <%= render 'layouts/errors_render', obj: @post %>
 
       <%= form_with model: @post, local: true do |f| %>
         <%= render 'form', f: f %>

@@ -1,0 +1,13 @@
+ja:
+  activerecord:
+    models:
+      post: 作品
+      genre: ジャンル
+    attributes:
+      post:
+        title: 作品タイトル
+        genre: ジャンル
+        genre_id: ジャンル名
+        post_image: 作品画像
+      genre:
+        name: ジャンル名

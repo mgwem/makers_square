@@ -44,6 +44,7 @@ Rails.application.routes.draw do
       post 'post_materials/edit' => "post_materials#post_material_edit"
       delete 'post_materials/destroy_all' => "post_materials#destroy_all"
     end
+    get 'posts/:id' => "posts#edit"
     resources :members, only:[:edit, :update, :show] do
       resources :posts, only:[:show]
       resources :favorites, only:[:index]
